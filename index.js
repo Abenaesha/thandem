@@ -1,6 +1,5 @@
 const func = (n) => {
-	return n
+	return n;
 }
 
-console.log( func( '10' ) )
-
+console.log( func( '10' ) );

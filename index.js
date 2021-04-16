@@ -1,5 +1,15 @@
-const func = (n) => {
-	return n;
-}
+const { Client } = require( "pg" )
 
-console.log( func( '10' ) );
+
+const client = new Client(
+	require("./dbConfig")
+)
+client.connect()
+
+
+client.query( "SELECT * FROM hello;", ( err, res ) => {
+	err ? console.log(err, "ERROR") : console.log(res)
+})
+
+
+

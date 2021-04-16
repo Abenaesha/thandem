@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-plugin-react": "^7.23.2",
+    "husky": "^6.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --fix",
+    "prepare": "husky install",
+    "setup-dbs": "psql -f ./setuptest.sql",
+    "view": "psql -f ./test.sql > output.txt"
+  },
+  "dependencies": {
+    "pg": "^8.6.0"
+  }
+}

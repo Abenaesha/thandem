@@ -1,0 +1,2 @@
+You are now connected to database "test" as user "abenaesha".
+CREATE TABLE

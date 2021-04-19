@@ -1,0 +1,42 @@
+module.exports = [
+	{
+		username: "t0gden",
+		firstName: "Tom",
+		lastName: "Ogden",
+		email: "example1@gmail.com",
+		password: "abcde1",
+		avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
+	},
+	{
+		username: "RaofRides",
+		firstName: "Raof",
+		lastName: "Benaesha",
+		email: "example2@gmail.com",
+		password: "abcde2",
+		avatar_url: "http://clipart-library.com/images/yckAgeMRi.jpg",
+	},
+	{
+		username: "RollingDan",
+		firstName: "Daniel",
+		lastName: "Stevenson",
+		email: "example3@gmail.com",
+		password: "abcde3",
+		avatar_url: "http://clipart-library.com/images/pc78gEXRi.jpg",
+	},
+	{
+		username: "Hannah123",
+		firstName: "Hannah",
+		lastName: "Lacey",
+		email: "example4@gmail.com",
+		password: "abcde4",
+		avatar_url: "http://clipart-library.com/images/6Tr6RExRc.png",
+	},
+	{
+		username: "NadiaPedals",
+		firstName: "Nadia",
+		lastName: "Amir",
+		email: "example5@gmail.com",
+		password: "abcde5",
+		avatar_url: "http://clipart-library.com/images/KLcdBGgT4.jpg",
+	},
+]

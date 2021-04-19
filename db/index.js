@@ -10,6 +10,3 @@ client.connect()
 client.query( "SELECT * FROM hello;", ( err, res ) => {
 	err ? console.log(err, "ERROR") : console.log(res)
 })
-
-
-

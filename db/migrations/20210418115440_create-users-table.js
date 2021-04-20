@@ -9,7 +9,6 @@ exports.up = function(knex) {
 		userTable.string("last_name")
 		userTable.string( "location" )
 		userTable.string("routes_data")
-		userTable.timestamp("created_at").defaultTo(knex.fn.now())
 	})
 }
 

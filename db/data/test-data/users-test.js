@@ -31,5 +31,23 @@ module.exports = [
 		password: "abcde3",
 		avatar_url: "http://clipart-library.com/images/pc78gEXRi.jpg",
 		location: "Sheffield",
-	}
+	},
+	{
+		username: "Hannah123",
+		first_name: "Hannah",
+		last_name: "Lacey",
+		email: "example4@gmail.com",
+		password: "abcde4",
+		avatar_url: "http://clipart-library.com/images/6Tr6RExRc.png",
+		location: "Manchester",
+	},
+	{
+		username: "NadiaPedals",
+		first_name: "Nadia",
+		last_name: "Amir",
+		email: "example5@gmail.com",
+		password: "abcde5",
+		avatar_url: "http://clipart-library.com/images/KLcdBGgT4.jpg",
+		location: "London",
+	},
 ]

@@ -1,3 +1,3 @@
-exports.usersTestData = require( "./users-test" )
-exports.commentsTestData = require( "./comments-test" )
-exports.ridesTestData = require("./rides-test")
+exports.usersData = require( "./users-test" )
+exports.commentsData = require( "./comments-test" )
+exports.ridesData = require("./rides-test")

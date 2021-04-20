@@ -1,9 +1,3 @@
-/* user id will be auto generated / assigned
-username / password / email - may not be require as we will use strava auth (maybe - google/facebook also) BUT is included here for example purposes
-routes_data - will be brought in by strava api
-created_at will be auto generated
-*/
-
 module.exports = [
 	{
 		username: "t0gden",
@@ -31,5 +25,23 @@ module.exports = [
 		password: "abcde3",
 		avatar_url: "http://clipart-library.com/images/pc78gEXRi.jpg",
 		location: "Sheffield",
-	}
+	},
+	{
+		username: "Hannah123",
+		first_name: "Hannah",
+		last_name: "Lacey",
+		email: "example4@gmail.com",
+		password: "abcde4",
+		avatar_url: "http://clipart-library.com/images/6Tr6RExRc.png",
+		location: "Manchester",
+	},
+	{
+		username: "NadiaPedals",
+		first_name: "Nadia",
+		last_name: "Amir",
+		email: "example5@gmail.com",
+		password: "abcde5",
+		avatar_url: "http://clipart-library.com/images/KLcdBGgT4.jpg",
+		location: "London",
+	},
 ]

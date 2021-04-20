@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-	return knex.schema.create( "comments", ( commentTable ) => {
+	return knex.schema.createTable( "comments", ( commentTable ) => {
 		commentTable.increments( "comments_id" ).primary()
 		commentTable.string("author").references("users.username").onDelete("CASCADE")
 		commentTable.integer("ride_id").references("rides.ride_id").onDelete("CASCADE")

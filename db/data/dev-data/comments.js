@@ -1,8 +1,3 @@
-/*
-comments_id - - - auto generated
-created_at - - - auto generated
-*/
-
 module.exports = [
 	{
 		author: "Hannah123",

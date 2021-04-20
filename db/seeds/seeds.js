@@ -1,6 +1,6 @@
 const { usersData, ridesData, commentsData } = require("../data/index")
 
-const { amendTimestamp } = require("../utils/data-manpipulation.js")
+const { amendTimestamp } = require("../utils/data-manipulation.js")
 
 exports.seed = function (knex) {
   return knex.migrate

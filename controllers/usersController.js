@@ -3,7 +3,6 @@ const { fetchUsers, postUser, fetchUserByUsername } = require( "../models/usersM
 
 exports.getUsers = ( req, res, next ) => {
 	fetchUsers().then( ( users ) => {
-		console.log(users, "con")
 		res.status(200).send({users})
 	} )
 		.catch(err => next(err))
@@ -11,8 +10,7 @@ exports.getUsers = ( req, res, next ) => {
 
 exports.insertUser = ( req, res, next ) => {
 	
-	postUser( req.body ).then( (newUser) => {
-		console.log(newUser, "con")
+	postUser( req.body ).then( ([newUser]) => {
 		res.status(201).send({newUser})
 	} )
 		.catch(err => next(err))
@@ -21,8 +19,7 @@ exports.insertUser = ( req, res, next ) => {
 exports.getUserByUsername = ( req, res, next ) => {
 	const { username } = req.params
 	fetchUserByUsername( username ).then( ( user ) => {
-		console.log( user )
-		res.status(200).send(user)
+		res.status(200).send({user})
 	} )
 		.catch(err => next(err))
 }

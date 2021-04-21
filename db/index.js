@@ -6,7 +6,7 @@ const client = new Client(
 client.connect()
 
 client.query( "SELECT * FROM users;", ( err, res ) => {
-	err ? console.log(err, "ERROR") : console.log(res)
+	err ? console.log(err, "ERROR") : console.log(res.rows)
 } )
 
 // psql    --host=thandem5.c0w8otlrrch5.us-east-2.rds.amazonaws.com    --port=5432    --username=teamthandem5    --password    --dbname=test

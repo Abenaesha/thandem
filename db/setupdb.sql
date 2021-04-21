@@ -1,5 +1,5 @@
--- DROP DATABASE IF EXISTS test;
--- DROP DATABASE IF EXISTS thandem5;
 
--- CREATE DATABASE test;
--- CREATE DATABASE thandem5;
+-- DROP DATABASE IF EXISTS thandem_local;
+
+
+-- CREATE DATABASE thandem_local;

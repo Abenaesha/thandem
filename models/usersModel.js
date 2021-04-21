@@ -9,8 +9,7 @@ exports.postUser = ( newUser ) => {
 }
 
 exports.fetchUserByUsername = ( username ) => {
-	return connection.select("*").from("users").where( "users.username", username ).then( (user) => {
-		console.log( user )
-		return user
+	return connection( "users" ).where( { username } ).then( ( user ) => {
+		return user[0]
 	})
 }

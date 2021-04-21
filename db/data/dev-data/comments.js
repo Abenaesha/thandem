@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		author: "Hannah123",
+		author: "hannah123",
 		ride_id: 1,
 		votes: 10,
 		body: "would love to join but busy this day, maybe next time!",
@@ -14,21 +14,21 @@ module.exports = [
 		created_at: 1691724163389,
 	},
 	{
-		author: "NadiaPedals",
+		author: "nadiaPedals",
 		ride_id: 2,
 		votes: 11,
 		body: "wouldnt miss it for the world :-)",
 		created_at: 1691321163389,
 	},
 	{
-		author: "RollingDan",
+		author: "rollingDan",
 		ride_id: 3,
 		votes: 30,
 		body: "Sounds great!",
 		created_at: 1691324963389,
 	},
 	{
-		author: "RaofRides",
+		author: "raofRides",
 		ride_id: 1,
 		votes: 3,
 		body: "cant make it this time im afraid as i am tutoring :-)",
@@ -42,7 +42,7 @@ module.exports = [
 		created_at: 1691924163389,
 	},
 	{
-		author: "Hannah123",
+		author: "hannah123",
 		ride_id: 3,
 		votes: 26,
 		body: "sounds lovely. count me in",

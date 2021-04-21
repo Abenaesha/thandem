@@ -5,7 +5,7 @@ const client = new Client(
 )
 client.connect()
 
-client.query( "SELECT * FROM rides;", ( err, res ) => {
+client.query( "SELECT * FROM users;", ( err, res ) => {
 	err ? console.log(err, "ERROR") : console.log(res)
 } )
 

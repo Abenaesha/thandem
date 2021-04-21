@@ -9,7 +9,6 @@ attendees - - - not sure if we need an extra table for this (Attendee table has 
 module.exports = [
 	{
 		author: "t0gden",
-		user_id: 1,
 		ride_date: 1611824163389,
 		route_data: "chester to manchester",
 		ride_type: "road",
@@ -20,8 +19,7 @@ module.exports = [
 		votes: 5,
 	},
 	{
-		author: "RaofRides",
-		user_id: 2,
+		author: "raofRides",
 		ride_date: 1612329163389,
 		route_data: "Manchester",
 		ride_type: "road",
@@ -32,8 +30,7 @@ module.exports = [
 		votes: 0
 	},
 	{
-		author: "RollingDan",
-		user_id: 3,
+		author: "rollingDan",
 		ride_date: 1619324193389,
 		route_data: "Sheffield hills",
 		ride_type: "cross country",

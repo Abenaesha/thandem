@@ -2,7 +2,6 @@ exports.up = function(knex) {
 	return knex.schema.createTable( "rides", ( rideTable ) => {
 		rideTable.increments( "ride_id" ).primary()
 		rideTable.string( "author" ).references( "users.username" ).onDelete( "CASCADE" )
-		rideTable.integer("user_id").references("users.user_id").onDelete("CASCADE")
 		rideTable.datetime("ride_date").notNullable()
 		rideTable.string( "route_data" ).notNullable()
 		rideTable.string( "ride_type" ).notNullable()

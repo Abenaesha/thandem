@@ -1,10 +1,8 @@
 const { usersData, ridesData, commentsData } = require("../data/index")
-//console.log(ridesData)
 const { amendTimestamp, amendRideDate } = require("../utils/data-manipulation.js")
 
-exports.seed = function (knex) {
-	return knex.migrate
-		.rollback()
+exports.seed = (knex) => {
+	return knex.migrate.rollback()
 		.then(() => {
 			return knex.migrate.latest()
 		})

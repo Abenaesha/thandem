@@ -1,4 +1,4 @@
-const { fetchRides, fetchRideById, fetchRidesByUsername, postRide, patchRideById } = require( "../models/ridesModel" )
+const { fetchRides, fetchRideById, fetchRidesByUsername, postRide, patchRideById, deleteRideById } = require( "../models/ridesModel" )
 
 exports.getRides = (req, res, next) => {
 	fetchRides().then( ( rides ) => {
@@ -39,4 +39,12 @@ exports.updateRideById = ( req, res, next ) => {
 		res.status(200).send({ride})
 	} )
 		.catch(err => next(err))
+}
+
+exports.removeRideById = (req, res, next) => {
+	deleteRideById( req.params ).then( ( msg ) => {
+		console.log(msg)
+		res.status(200).send({msg})
+	} )
+		.catch(err=>next(err))
 }

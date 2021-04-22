@@ -155,7 +155,7 @@ describe( "/api", () => {
 			} )
 		} )
 		describe( "DELETE - /users/:username", () => {
-			test( "204: DELETE - responds with 204 for successful delete request by username", () => {
+			test( "200: DELETE - responds with a message for successful delete request by username", () => {
 				return request( app )
 					.delete( "/api/users/rollingDan" )
 					.expect( 200 )
@@ -256,7 +256,6 @@ describe( "/api", () => {
 					.send( input )
 					.expect( 201 )
 					.then( ( { body: { newRide } } ) => {
-						console.log( newRide )
 						expect( newRide ).toEqual( {
 							ride_id: 5,
 							author: "t0gden",
@@ -293,7 +292,17 @@ describe( "/api", () => {
 						})
 					})
 			})
-			
+		})
+		describe("DELETE - / api/rides/ride_id", () => {
+			test("200: DELETE - responds with a message for successful delete request by ride id", () => {
+				return request( app )
+					.delete( "/api/rides/3" )
+					.expect( 200 )
+					.then( ( { body: { msg } } ) => {
+						console.log(msg)
+						expect(msg).toBe("1 has been successfully deleted")
+					})
+			})
 		})
 		
 		

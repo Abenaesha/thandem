@@ -1,4 +1,4 @@
-const { getRides, getRideById, insertRide, updateRideById } = require( "../controllers/ridesController" )
+const { getRides, getRideById, insertRide, updateRideById, removeRideById } = require( "../controllers/ridesController" )
 
 const ridesRouter = require( "express" ).Router()
 
@@ -11,7 +11,8 @@ ridesRouter
 ridesRouter
 	.route( "/:ride_id" )
 	.get( getRideById )
-	.patch(updateRideById)
+	.patch( updateRideById )
+	.delete(removeRideById)
 
 
 module.exports = ridesRouter

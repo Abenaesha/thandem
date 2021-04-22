@@ -24,7 +24,7 @@ DELETE
 GET
 /api/rides
 /api/rides/:ride_id
-/api/users/:username/rides
+/api/users/:username/rides *
 
 POST
 /api/rides

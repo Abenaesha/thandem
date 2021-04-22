@@ -193,7 +193,7 @@ describe( "/api", () => {
 			})
 		})
 		describe( "GET - /rides/:ride_id", () => {
-			test("200: GET - return a successful request for ride_id with correct object", () => {
+			test("200: GET - returns a successful request for ride_id with correct object", () => {
 				return request( app )
 					.get( "/api/rides/3" )
 					.expect( 200 )
@@ -212,7 +212,68 @@ describe( "/api", () => {
 						})
 					})
 			})
+		} )
+		xdescribe("GET - /users/:username/rides", () => {
+			test("200: GET - returns a array of ride object by username", () => {
+				return request( app )
+					.get( "/api/users/rollingDan/rides" )
+					.expect( 200 )
+					.then( ( { body: { rides } } ) => {
+						console.log( rides )
+						expect( rides ).toHaveLength( 2 )
+						rides.forEach( ride => {
+							expect( ride ).objectContaining( {
+								ride_id: expect.any(Number),
+								author: expect.any( String ),
+								ride_date: expect.any( String ),
+								route_data: expect.any( String ),
+								ride_type: expect.any( String ),
+								title: expect.any( String ),
+								description: expect.any( String ),
+								experience_level: expect.any( String ),
+								created_at: expect.any( String ),
+								votes: expect.any(Number)
+							})
+						})
+					})
+			})
 		})
+		describe("POST - /ride", () => {
+			test("201: POST - returns an object with new ride", () => {
+				const input = {
+					author: "t0gden",
+					ride_date: 1619324193389,
+					route_data: "Wales hills",
+					ride_type: "mountain",
+					title: "evening ride",
+					description: "amazing bike adventure in Wales",
+					experience_level: "advanced",
+					created_at: new Date(),
+					votes: 0
+				}
+				return request( app )
+					.post( "/api/rides" )
+					.send( input )
+					.expect( 201 )
+					.then( ( { body: { newRide } } ) => {
+						console.log( newRide )
+						expect( newRide ).toEqual( {
+							ride_id: 5,
+							author: "t0gden",
+							ride_date: 1619324193389,
+							route_data: "Wales hills",
+							ride_type: "mountain",
+							title: "evening ride",
+							description: "amazing bike adventure in Wales",
+							experience_level: "advanced",
+							created_at: expect.any(String),
+							votes: 0
+						})
+					})
+			})
+			
+		})
+		
 		
 	})
 	

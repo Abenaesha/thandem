@@ -40,4 +40,15 @@ module.exports = [
 		created_at: 1601324163389,
 		votes: -10
 	},
+	{
+		author: "rollingDan",
+		ride_date: 1619324195389,
+		route_data: "Sheffield roads",
+		ride_type: "road",
+		title: "workout",
+		description: "anyone in the sheffield area want to join me on a loop?",
+		experience_level: "intermediate",
+		created_at: 1601324162389,
+		votes: 50
+	},
 ]

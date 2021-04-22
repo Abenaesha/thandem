@@ -1,4 +1,4 @@
-const { fetchRides, fetchRideById } = require( "../models/ridesModel" )
+const { fetchRides, fetchRideById, fetchRidesByUsername, postRide } = require( "../models/ridesModel" )
 
 
 exports.getRides = (req, res, next) => {
@@ -11,8 +11,24 @@ exports.getRides = (req, res, next) => {
 exports.getRideById = (req, res, next) => {
 	const { ride_id } = req.params
 	fetchRideById( ride_id ).then( ride => {
-		//console.log( ride )
 		res.status(200).send({ride})
+	} )
+		.catch(err => next(err))
+}
+
+exports.getRidesByUsername = (req, res, next) => {
+	const { username } = req.params
+	fetchRidesByUsername( username ).then( rides => {
+		console.log(rides)
+		res.status( 200 ).send( { rides } )
+	} )
+		.catch( err => next( err ) )
+}
+
+exports.insertRide = ( req, res, next ) => {
+	postRide( req.body ).then( ( newRide ) => {
+		console.log(newRide)
+		res.status(201).send({newRide})
 	} )
 		.catch(err => next(err))
 }

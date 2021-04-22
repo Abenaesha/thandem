@@ -1,10 +1,11 @@
-const { getRides, getRideById } = require( "../controllers/ridesController" )
+const { getRides, getRideById, insertRide } = require( "../controllers/ridesController" )
 
 const ridesRouter = require( "express" ).Router()
 
 ridesRouter
 	.route( "/" )
 	.get( getRides )
+	.post(insertRide)
 	
 ridesRouter
 	.route( "/:ride_id" )

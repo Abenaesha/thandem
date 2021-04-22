@@ -9,7 +9,6 @@ exports.getUsers = ( req, res, next ) => {
 }
 
 exports.insertUser = ( req, res, next ) => {
-	
 	postUser( req.body ).then( ([newUser]) => {
 		res.status(201).send({newUser})
 	} )

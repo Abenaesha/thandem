@@ -272,22 +272,23 @@ describe( "/api", () => {
 					})
 			})	
 		})
-		xdescribe("PATCH - /api/rides/:ride_id", () => {
+		describe("PATCH - /api/rides/:ride_id", () => {
 			test("200: PATCH - responds with an updated ride object", () => {
 				return request( app )
-					.patch( "/api/rides/raofRides" )
+					.patch( "/api/rides/2" )
 					.send( { votes: 99 } )
 					.expect( 200 )
 					.then( ( { body: { ride } } ) => {
 						expect( ride ).toEqual( {
+							ride_id: 2,
 							author: "raofRides",
-							ride_date: 1612329163389,
+							ride_date: "2021-02-03T05:12:43.389Z",
 							route_data: "Manchester",
 							ride_type: "road",
 							title: "Manchester loop",
 							description: "anyone want to join me on a loop around manchester",
 							experience_level: "intermediate",
-							created_at: 1601324163389,
+							created_at: "2020-09-28T20:16:03.389Z",
 							votes: 99,
 						})
 					})

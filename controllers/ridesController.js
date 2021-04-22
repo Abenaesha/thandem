@@ -37,8 +37,7 @@ exports.updateRideById = ( req, res, next ) => {
 	const { ride_id } = req.params
 	const { votes } = req.body
 	patchRideById( ride_id, votes ).then( ( ride ) => {
-		console.log(ride)
-		res.status(200).send(ride)
+		res.status(200).send({ride})
 	} )
 		.catch(err => next(err))
 }

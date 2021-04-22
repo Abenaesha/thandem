@@ -29,8 +29,7 @@ exports.patchRideById = (ride_id, votes) => {
 		.where( { ride_id } )
 		.increment( { votes } || 0 )
 		.returning( "*" )
-		.then( ( ride ) => {
-			console.log( ride )
+		.then( ( [ride] ) => {
 			return ride
 		})
 	

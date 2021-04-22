@@ -67,8 +67,8 @@ describe( "/api", () => {
 			return request( app )
 				.get( "/api/users/raofRides" )
 				.expect( 200 )
-				.then( ( { body } ) => {
-					expect( body.user ).toMatchObject( {
+				.then( ( { body: {user} } ) => {
+					expect( user ).toMatchObject( {
 						username: "raofRides",
 						first_name: "Raof",
 						last_name: "Benaesha",
@@ -79,7 +79,80 @@ describe( "/api", () => {
 					})
 				})
 		})
-		
+	})
+	describe("PATCH - /users/:username", () => {
+		test("200: PATCH - responds with an updated user avatar_url object", () => {
+			return request( app )
+				.patch( "/api/users/t0gden" )
+				.send({avatar_url: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png"})
+				.expect( 200 )
+				.then( ( { body: {user} } ) => {
+					expect( user ).toEqual( {
+						username: "t0gden",
+						first_name: "Tom",
+						last_name: "Ogden",
+						email: "example1@gmail.com",
+						password: "abcde1",
+						avatar_url: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
+						location: "Chester",
+						routes_data: null,
+					})
+				})
+		})
+		test("200: PATCH - responds with an updated user location object", () => {
+			return request( app )
+				.patch( "/api/users/t0gden" )
+				.send({location: "Leeds"})
+				.expect( 200 )
+				.then( ( { body: {user} } ) => {
+					expect( user ).toEqual( {
+						username: "t0gden",
+						first_name: "Tom",
+						last_name: "Ogden",
+						email: "example1@gmail.com",
+						password: "abcde1",
+						avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
+						location: "Leeds",
+						routes_data: null,
+					})
+				})
+		} )
+		test("200: PATCH - responds with an updated user password object", () => {
+			return request( app )
+				.patch( "/api/users/t0gden" )
+				.send({password: "1edcba"})
+				.expect( 200 )
+				.then( ( { body: {user} } ) => {
+					expect( user ).toEqual( {
+						username: "t0gden",
+						first_name: "Tom",
+						last_name: "Ogden",
+						email: "example1@gmail.com",
+						password: "1edcba",
+						avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
+						location: "Chester",
+						routes_data: null,
+					})
+				})
+		} )
+		test("200: PATCH - responds with an updated user multiple elements object", () => {
+			return request( app )
+				.patch( "/api/users/t0gden" )
+				.send({password: "northcoders2021", location: "Manchester", avatar_url: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png"})
+				.expect( 200 )
+				.then( ( { body: {user} } ) => {
+					expect( user ).toEqual( {
+						username: "t0gden",
+						first_name: "Tom",
+						last_name: "Ogden",
+						email: "example1@gmail.com",
+						password: "northcoders2021",
+						avatar_url: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
+						location: "Manchester",
+						routes_data: null,
+					})
+				})
+		})
 	})
 	
 

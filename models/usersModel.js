@@ -13,3 +13,13 @@ exports.fetchUserByUsername = ( username ) => {
 		return user[0]
 	})
 }
+
+exports.patchUserByUsername = ( username, avatar_url, location, password ) => {
+	return connection( "users" )
+		.where( { username } )
+		.update( { avatar_url, location, password })
+		.returning( "*" )
+		.then( ( [ user ] ) => {
+			return user
+		})
+}

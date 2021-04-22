@@ -11,7 +11,6 @@ GET
 GET
 /api/users
 /api/users/:username
-/api/users/:username/rides *
 
 POST
 /api/users
@@ -25,11 +24,10 @@ DELETE
 GET
 /api/rides
 /api/rides/:ride_id
-/api/rides/:ride_id/comments
+/api/users/:username/rides
 
 POST
 /api/rides
-/api/rides/:ride_id/comments
 
 PATCH
 /api/rides/:ride_id
@@ -40,6 +38,10 @@ DELETE
 GET
 /api/comments
 /api/comments/comment_id
+/api/rides/:ride_id/comments
+
+POST
+/api/rides/:ride_id/comments
 
 PATCH
 /api/comments/comment_id

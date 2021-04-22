@@ -1,4 +1,4 @@
-const { fetchUsers, postUser, fetchUserByUsername } = require( "../models/usersModel" )
+const { fetchUsers, postUser, fetchUserByUsername, patchUserByUsername } = require( "../models/usersModel" )
 
 
 exports.getUsers = ( req, res, next ) => {
@@ -20,6 +20,15 @@ exports.getUserByUsername = ( req, res, next ) => {
 	const { username } = req.params
 	fetchUserByUsername( username ).then( ( user ) => {
 		res.status(200).send({user})
+	} )
+		.catch(err => next(err))
+}
+
+exports.updateUserByUsername = ( req, res, next ) => {
+	const { username } = req.params
+	const { avatar_url, location, password } = req.body
+	patchUserByUsername(username, avatar_url, location, password).then( (user) => {
+		res.status( 200 ).send( { user } )
 	} )
 		.catch(err => next(err))
 }

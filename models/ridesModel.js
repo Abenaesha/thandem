@@ -12,7 +12,6 @@ exports.fetchRideById = ( ride_id ) => {
 
 exports.fetchRidesByUsername = ( username,  ) => {
 	return connection( "rides" ).where( { username } ).then( ( rides ) => {
-		console.log( rides )
 		return rides
 	})
 }

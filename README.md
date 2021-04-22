@@ -36,7 +36,6 @@ DELETE
 /api/rides/ride_id
 
 GET
-/api/comments
 /api/comments/comment_id
 /api/rides/:ride_id/comments
 

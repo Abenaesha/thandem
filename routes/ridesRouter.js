@@ -5,7 +5,8 @@ const ridesRouter = require( "express" ).Router()
 ridesRouter
 	.route( "/" )
 	.get( getRides )
-	.post(insertRide)
+	.post( insertRide )
+
 	
 ridesRouter
 	.route( "/:ride_id" )

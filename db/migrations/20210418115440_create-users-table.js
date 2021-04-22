@@ -7,7 +7,9 @@ exports.up = function(knex) {
 		userTable.string("first_name")
 		userTable.string("last_name")
 		userTable.string( "location" )
-		userTable.string("routes_data")
+		userTable.string( "routes_data" )
+		userTable.string( "bike_type" ).notNullable()
+		userTable.string( "experience_level" ).notNullable()
 	})
 }
 

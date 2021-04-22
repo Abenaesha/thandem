@@ -1,6 +1,5 @@
 const { fetchRides, fetchRideById, fetchRidesByUsername, postRide, patchRideById } = require( "../models/ridesModel" )
 
-
 exports.getRides = (req, res, next) => {
 	fetchRides().then( ( rides ) => {
 		res.status(200).send({rides})
@@ -25,11 +24,11 @@ exports.getRidesByUsername = (req, res, next) => {
 		.catch( err => next( err ) )
 }
 
-exports.insertRide = ( req, res, next ) => {
-	postRide( req.body ).then( ( newRide ) => {
-		console.log(newRide)
-		res.status(201).send({newRide})
-	} )
+exports.insertRide = (req, res, next) => {
+	postRide(req.body)
+		.then(([newRide]) => {
+			res.status(201).send({ newRide })
+		})
 		.catch(err => next(err))
 }
 

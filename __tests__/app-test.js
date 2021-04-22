@@ -237,12 +237,12 @@ describe( "/api", () => {
 						})
 					})
 			})
-		})
-		xdescribe("POST - /ride", () => {
+		} )
+		describe("POST - /ride", () => {
 			test("201: POST - returns an object with new ride", () => {
 				const input = {
 					author: "t0gden",
-					ride_date: 1619324193389,
+					ride_date: new Date(1619324193389),
 					route_data: "Wales hills",
 					ride_type: "mountain",
 					title: "evening ride",
@@ -260,7 +260,7 @@ describe( "/api", () => {
 						expect( newRide ).toEqual( {
 							ride_id: 5,
 							author: "t0gden",
-							ride_date: 1619324193389,
+							ride_date: "2021-04-25T04:16:33.389Z",
 							route_data: "Wales hills",
 							ride_type: "mountain",
 							title: "evening ride",

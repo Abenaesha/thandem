@@ -296,10 +296,9 @@ describe( "/api", () => {
 		describe("DELETE - / api/rides/ride_id", () => {
 			test("200: DELETE - responds with a message for successful delete request by ride id", () => {
 				return request( app )
-					.delete( "/api/rides/3" )
+					.delete( "/api/rides/1" )
 					.expect( 200 )
 					.then( ( { body: { msg } } ) => {
-						console.log(msg)
 						expect(msg).toBe("1 has been successfully deleted")
 					})
 			})

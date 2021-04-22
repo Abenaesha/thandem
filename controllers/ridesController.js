@@ -41,10 +41,10 @@ exports.updateRideById = ( req, res, next ) => {
 		.catch(err => next(err))
 }
 
-exports.removeRideById = (req, res, next) => {
-	deleteRideById( req.params ).then( ( msg ) => {
-		console.log(msg)
-		res.status(200).send({msg})
+exports.removeRideById = ( req, res, next ) => {
+	const { ride_id } = req.params
+	deleteRideById( ride_id ).then( ( msg ) => {
+		res.status(200).send(msg)
 	} )
 		.catch(err=>next(err))
 }

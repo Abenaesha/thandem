@@ -32,12 +32,10 @@ exports.patchRideById = (ride_id, votes) => {
 }
 
 exports.deleteRideById = ( ride_id ) => {
-	console.log(ride_id)
 	return connection( "rides" )
 		.where( { ride_id } )
 		.del()
-		.then( (del) => {
-			console.log(del)
+		.then( () => {
 			return { msg: `${ ride_id } has been successfully deleted` }
 		})
 }

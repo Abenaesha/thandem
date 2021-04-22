@@ -6,7 +6,7 @@ exports.fetchRides = () => {
 
 exports.fetchRideById = ( ride_id ) => {
 	return connection( "rides" ).where( { ride_id } ).then( (ride) => {
-		console.log( ride )
+		//console.log( ride )
 		return ride[0]
 	})
 }

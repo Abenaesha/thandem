@@ -192,24 +192,26 @@ describe( "/api", () => {
 					})
 			})
 		})
-		xdescribe("GET - /rides/:ride_id", () => {
-			return request( app )
-				.get( "/api/rides/3" )
-				.expect( 200 )
-				.then( ( { body: { ride } } ) => {
-					expect( ride ).toMatchObject( {
-						ride_id: 3,
-						author: "rollingDan",
-						ride_date: new Date(1619324193389),
-						route_data: "Sheffield hills",
-						ride_type: "cross country",
-						title: "gentle pedal outside sheffield",
-						description: "anyone in the sheffield area want to join me on a loop?",
-						experience_level: "beginner",
-						created_at: new Date(1601324163389),
-						votes: -10
+		describe( "GET - /rides/:ride_id", () => {
+			test("200: GET - return a successful request for ride_id with correct object", () => {
+				return request( app )
+					.get( "/api/rides/3" )
+					.expect( 200 )
+					.then( ( { body: { ride } } ) => {
+						expect( ride ).toMatchObject( {
+							ride_id: 3,
+							author: "rollingDan",
+							ride_date: "2021-04-25T04:16:33.389Z",
+							route_data: "Sheffield hills",
+							ride_type: "cross country",
+							title: "gentle pedal outside sheffield",
+							description: "anyone in the sheffield area want to join me on a loop?",
+							experience_level: "beginner",
+							created_at: "2020-09-28T20:16:03.389Z",
+							votes: -10
+						})
 					})
-				})
+			})
 		})
 		
 	})

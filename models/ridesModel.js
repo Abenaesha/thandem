@@ -10,7 +10,7 @@ exports.fetchRideById = ( ride_id ) => {
 	})
 }
 
-exports.fetchRidesByUsername = ( username ) => {
+exports.fetchRidesByUsername = ( username,  ) => {
 	return connection( "rides" ).where( { username } ).then( ( rides ) => {
 		console.log( rides )
 		return rides
@@ -22,4 +22,16 @@ exports.postRide = ( newRide ) => {
 		console.log( ride )
 		return ride
 	})
+}
+
+exports.patchRideById = (ride_id, votes) => {
+	return connection( "rides" )
+		.where( { ride_id } )
+		.increment( { votes } || 0 )
+		.returning( "*" )
+		.then( ( ride ) => {
+			console.log( ride )
+			return ride
+		})
+	
 }

@@ -238,7 +238,7 @@ describe( "/api", () => {
 					})
 			})
 		})
-		describe("POST - /ride", () => {
+		xdescribe("POST - /ride", () => {
 			test("201: POST - returns an object with new ride", () => {
 				const input = {
 					author: "t0gden",
@@ -268,6 +268,27 @@ describe( "/api", () => {
 							experience_level: "advanced",
 							created_at: expect.any(String),
 							votes: 0
+						})
+					})
+			})	
+		})
+		xdescribe("PATCH - /api/rides/:ride_id", () => {
+			test("200: PATCH - responds with an updated ride object", () => {
+				return request( app )
+					.patch( "/api/rides/raofRides" )
+					.send( { votes: 99 } )
+					.expect( 200 )
+					.then( ( { body: { ride } } ) => {
+						expect( ride ).toEqual( {
+							author: "raofRides",
+							ride_date: 1612329163389,
+							route_data: "Manchester",
+							ride_type: "road",
+							title: "Manchester loop",
+							description: "anyone want to join me on a loop around manchester",
+							experience_level: "intermediate",
+							created_at: 1601324163389,
+							votes: 99,
 						})
 					})
 			})

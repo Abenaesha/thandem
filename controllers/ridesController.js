@@ -1,4 +1,4 @@
-const { fetchRides, fetchRideById, fetchRidesByUsername, postRide } = require( "../models/ridesModel" )
+const { fetchRides, fetchRideById, fetchRidesByUsername, postRide, patchRideById } = require( "../models/ridesModel" )
 
 
 exports.getRides = (req, res, next) => {
@@ -29,6 +29,16 @@ exports.insertRide = ( req, res, next ) => {
 	postRide( req.body ).then( ( newRide ) => {
 		console.log(newRide)
 		res.status(201).send({newRide})
+	} )
+		.catch(err => next(err))
+}
+
+exports.updateRideById = ( req, res, next ) => {
+	const { ride_id } = req.params
+	const { votes } = req.body
+	patchRideById( ride_id, votes ).then( ( ride ) => {
+		console.log(ride)
+		res.status(200).send(ride)
 	} )
 		.catch(err => next(err))
 }

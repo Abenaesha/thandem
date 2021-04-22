@@ -23,3 +23,12 @@ exports.patchUserByUsername = ( username, avatar_url, location, password ) => {
 			return user
 		})
 }
+
+exports.deleteUserByUsername = (username) => {
+	return connection( "users" )
+		.where({username})
+		.del()
+		.then( () => {
+			return {msg: `${username} has been successfully deleted`}
+		})
+}

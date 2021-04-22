@@ -153,7 +153,18 @@ describe( "/api", () => {
 					})
 				})
 		})
+	} )
+	describe("DELETE - /users/:username", () => {
+		test("204: DELETE - responds with 204 for successful delete request by username", () => {
+			return request( app )
+				.delete( "/api/users/rollingDan" )
+				.expect( 200 )
+				.then( ( { body: { msg } } ) => {
+					expect(msg).toBe("rollingDan has been successfully deleted")
+				})
+		})
 	})
+	
 	
 
 })

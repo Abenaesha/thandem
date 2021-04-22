@@ -61,7 +61,6 @@ describe( "/api", () => {
 					})
 				})
 		})
-		
 	})
 	describe("GET - /users/:username", () => {
 		test("200: return a successful request for username with correct details", () => {
@@ -83,5 +82,5 @@ describe( "/api", () => {
 		
 	})
 	
-	
+
 })

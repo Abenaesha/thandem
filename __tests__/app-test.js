@@ -35,7 +35,7 @@ describe("/api", () => {
       })
     })
     describe("POST - /users", () => {
-      test("201: reposnds with 201 for a successful post user request", () => {
+      test("201: responds with 201 for a successful post user request", () => {
         const input = {
           username: "Dave3",
           first_name: "Dave",
@@ -66,6 +66,18 @@ describe("/api", () => {
               rider_level: "Beginner",
             })
           })
+      })
+      test("405: responds with status 405 for invalid methods", () => {
+        const notAllowedMethods = ["patch", "put", "delete"]
+        const methodPromises = notAllowedMethods.map((method) => {
+          return request(app)
+            [method]("/api/users")
+            .expect(405)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("Method not allowed!")
+            })
+        })
+        return Promise.all(methodPromises)
       })
     })
     describe("GET - /users/:username", () => {
@@ -179,6 +191,19 @@ describe("/api", () => {
             })
           })
       })
+      //   test("STATUS 400: client tries to PATCH user with details that doesn't match schema requirements", () => {
+      //     return request(app)
+      //       .patch("/api/users/t0gden")
+      //       .send({
+      //         location: 5,
+      //       })
+      //       .expect(400)
+      //       .then(({ body }) => {
+      //         expect(body.msg).toBe(
+      //           "Sorry but your request on path /api/users/t0gden is a bad request"
+      //         )
+      //       })
+      //   })
     })
     describe("DELETE - /users/:username", () => {
       test("200: DELETE - responds with a message for successful delete request by username", () => {
@@ -189,6 +214,26 @@ describe("/api", () => {
             expect(msg).toBe("rollingDan has been successfully deleted")
           })
       })
+    })
+    test("405: responds with status 405 for invalid methods", () => {
+      const notAllowedMethods = ["post", "put"]
+      const methodPromises = notAllowedMethods.map((method) => {
+        return request(app)
+          [method]("/api/users/:username")
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("Method not allowed!")
+          })
+      })
+      return Promise.all(methodPromises)
+    })
+    test("STATUS 404: client enters username that doesn't exist", () => {
+      return request(app)
+        .get("/api/users/barry_from_eastenders")
+        .expect(404)
+        .then(({ body }) => {
+          expect(body.msg).toBe("barry_from_eastenders not found")
+        })
     })
   })
   describe("/api/rides", () => {
@@ -217,6 +262,18 @@ describe("/api", () => {
             })
           })
       })
+      test("405: responds with status 405 for invalid methods", () => {
+        const notAllowedMethods = ["patch", "put", "delete"]
+        const methodPromises = notAllowedMethods.map((method) => {
+          return request(app)
+            [method]("/api/rides")
+            .expect(405)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("Method not allowed!")
+            })
+        })
+        return Promise.all(methodPromises)
+      })
     })
     describe("GET - /rides/:ride_id", () => {
       test("200: GET - returns a successful request for ride_id with correct object", () => {
@@ -239,6 +296,26 @@ describe("/api", () => {
             })
           })
       })
+      test("405: responds with status 405 for invalid methods", () => {
+        const notAllowedMethods = ["post", "put"]
+        const methodPromises = notAllowedMethods.map((method) => {
+          return request(app)
+            [method]("/api/rides/:ride_id")
+            .expect(405)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("Method not allowed!")
+            })
+        })
+        return Promise.all(methodPromises)
+      })
+      test("STATUS 404: client enters ride_id that doesn't exist", () => {
+        return request(app)
+          .get("/api/rides/450")
+          .expect(404)
+          .then(({ body }) => {
+            expect(body.msg).toBe("Ride ID 450 not found")
+          })
+      })
     })
     xdescribe("GET - /users/:username/rides", () => {
       test("200: GET - returns a array of ride object by username", () => {
@@ -246,7 +323,6 @@ describe("/api", () => {
           .get("/api/users/rollingDan/rides")
           .expect(200)
           .then(({ body: { rides } }) => {
-            console.log(rides)
             expect(rides).toHaveLength(2)
             rides.forEach((ride) => {
               expect(ride).objectContaining({
@@ -320,16 +396,41 @@ describe("/api", () => {
           })
       })
     })
-    describe("DELETE - / api/rides/ride_id", () => {
+    test("STATUS 404: client enters ride_id that doesn't exist", () => {
+      return request(app)
+        .get("/api/rides/450")
+        .expect(404)
+        .then(({ body }) => {
+          expect(body.msg).toBe("Ride ID 450 not found")
+        })
+    })
+    describe("DELETE - / api/rides/:ride_id", () => {
       test("200: DELETE - responds with a message for successful delete request by ride id", () => {
         return request(app)
           .delete("/api/rides/3")
           .expect(200)
           .then(({ body: { msg } }) => {
-            console.log(msg)
-            expect(msg).toBe("3 has been successfully deleted")
+            expect(msg).toBe("Ride ID 3 has been successfully deleted")
           })
       })
+    })
+    test("STATUS 404: client enters ride_id that doesn't exist", () => {
+      return request(app)
+        .get("/api/rides/450")
+        .expect(404)
+        .then(({ body }) => {
+          expect(body.msg).toBe("Ride ID 450 not found")
+        })
+    })
+    test("STATUS 400: client enters ride_id that doesn't match schema requirements", () => {
+      return request(app)
+        .get("/api/rides/bike_ride2")
+        .expect(400)
+        .then(({ body }) => {
+          expect(body.msg).toBe(
+            "Sorry but your request on path /api/rides/bike_ride2 is a bad request"
+          )
+        })
     })
   })
 })

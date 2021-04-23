@@ -1,7 +1,21 @@
 const connection = require( "../db/connection" )
 
-exports.fetchRides = () => {
-	return connection("rides").select("*")
+exports.fetchRides = (  {sort_by, order, author } ) => {
+	return connection.select( "rides.*" )
+		.from( "rides" )
+		.count( "comments.comment_id", { as: "comment_count " } )
+		.leftJoin( "comments", "comments.ride_id", "rides.ride_id" )
+		.groupBy( "rides.ride_id" )
+		.orderBy( sort_by || "created_at", order || "desc" )
+		.modify( query => {
+			if ( author ) {
+				query.where("rides.author", author)
+			}
+		})
+		.returning( "*" )
+		.then( rides => {
+			return { rides, total_count: rides.length }
+		})
 }
 
 exports.fetchRideById = ( ride_id ) => {

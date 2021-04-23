@@ -1,5 +1,5 @@
 process.env.NODE_ENV = "test"
-const request = require("supertest")
+const request = require( "supertest" )
 const app = require("../app")
 const connection = require("../db/connection")
 
@@ -216,6 +216,51 @@ describe("/api", () => {
 							)
 						})
 					})
+			} )
+			describe("Queries", () => {
+				test("200: GET - sort_by queries default to created_at", () => {
+					return request(app)
+						.get("/api/rides?order=asc")
+						.expect(200)
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toBeSortedBy( "created_at", {
+								coerce: true
+							})
+						})
+				} )
+				test("200: GET - order queries defaults to descending unless specified", () => {
+					return request(app)
+						.get("/api/rides?sort_by=joins")
+						.expect(200)
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toBeSortedBy( "joins", {
+								descending: true
+							})
+						})
+				} )
+				test("200: GET - order queries defaults to descending unless specified", () => {
+					return request(app)
+						.get("/api/rides?sort_by=joins&order=asc")
+						.expect(200)
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toBeSortedBy( "joins" )
+						})
+				} )
+				test( "200: filters the results of rides by author", () => {
+					return request( app )
+						.get( "/api/rides?author=raofRides" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.author ).toBe( "raofRides" )
+							} )
+						} )
+				})
+
+				
+				
 			})
 		} )
 		describe("POST - /ride", () => {
@@ -269,31 +314,6 @@ describe("/api", () => {
 							experience_level: "beginner",
 							created_at: "2020-09-28T20:16:03.389Z",
 							joins: 10,
-						})
-					})
-			})
-		})
-		xdescribe("GET - /users/:username/rides", () => {
-			test("200: GET - returns a array of ride object by username", () => {
-				return request(app)
-					.get("/api/users/rollingDan/rides")
-					.expect(200)
-					.then(({ body: { rides } }) => {
-						console.log(rides)
-						expect(rides).toHaveLength(2)
-						rides.forEach((ride) => {
-							expect(ride).objectContaining({
-								ride_id: expect.any(Number),
-								author: expect.any(String),
-								ride_date: expect.any(String),
-								route_data: expect.any(String),
-								ride_type: expect.any(String),
-								title: expect.any(String),
-								description: expect.any(String),
-								experience_level: expect.any(String),
-								created_at: expect.any(String),
-								joins: expect.any(Number),
-							})
 						})
 					})
 			})
@@ -391,7 +411,7 @@ describe("/api", () => {
 					.then( ( { body: { comment } } ) => {
 						expect( comment ).toHaveProperty( "author" )
 						expect( comment ).toHaveProperty( "ride_id" )
-						//expect( comment ).toHaveProperty( "votes" )
+						expect( comment ).toHaveProperty( "votes" )
 						expect( comment ).toEqual( {
 							comment_id: 4,
 							author: "t0gden",

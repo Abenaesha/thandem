@@ -354,30 +354,67 @@ describe("/api", () => {
 					} )
 			})
 		} )
-	} )
-	describe( "POST - /rides/ride_id/comments", () => {
-		it( "201: POST - responds with 201 for successful request with new comment", () => {
-			const input = {
-				body: "NEW - Do not forget to commit regularly!",
-				ride_id: 1,
-				author: "t0gden",
-				votes: 0,
-				created_at: new Date(),
-			}
-			return request( app )
-				.post( "/api/rides/1/comments" )
-				.send( input )
-				.expect( 201 )
-				.then( ( { body: { newComment } } ) => {
-					expect( newComment ).toMatchObject({
-						comment_id: 5,
-						body: "NEW - Do not forget to commit regularly!",
-						ride_id: 1,
-						author: "t0gden",
-						votes: 0,
-						created_at: expect.any( String ),
-					})
-				} )
+		describe( "POST - /rides/ride_id/comments", () => {
+			test( "201: POST - responds with 201 for successful request with new comment", () => {
+				const input = {
+					body: "NEW - Do not forget to commit regularly!",
+					ride_id: 1,
+					author: "t0gden",
+					votes: 0,
+					created_at: new Date(),
+				}
+				return request( app )
+					.post( "/api/rides/1/comments" )
+					.send( input )
+					.expect( 201 )
+					.then( ( { body: { newComment } } ) => {
+						expect( newComment ).toMatchObject({
+							comment_id: 5,
+							body: "NEW - Do not forget to commit regularly!",
+							ride_id: 1,
+							author: "t0gden",
+							votes: 0,
+							created_at: expect.any( String ),
+						})
+					} )
+			} )
 		} )
-	})
+		describe("PATCH - /comments/comment_id", () => {
+			test( "200: PATCH - returns an object of updated comment with an updated body for a valid comment id", () => {
+				const input = {
+					body: "Let's go guys!"
+				}
+				return request( app )
+					.patch( "/api/comments/4" )
+					.send(input)
+					.expect( 200 )
+					.then( ( { body: { comment } } ) => {
+						expect( comment ).toHaveProperty( "author" )
+						expect( comment ).toHaveProperty( "ride_id" )
+						//expect( comment ).toHaveProperty( "joins" )
+						expect( comment ).toEqual( {
+							comment_id: 4,
+							author: "t0gden",
+							ride_id: 2,
+							votes: 1,
+							body: "Let's go guys!",
+							created_at: expect.any(String),
+						})
+					})
+			})
+		} )
+		describe("DELETE - /comments/comment_id", () => {
+			test("200: DELETE - responds with a message for a successful delete request for a valid comment id", () => {
+				return request( app )
+					.delete( "/api/comments/1" )
+					.expect( 200 )
+					.then( ( { body: { msg } } ) => {
+						expect(msg).toBe("Comment with id 1 has been successfully deleted")
+					})
+			})
+			
+		})
+		
+	} )
+	
 })

@@ -36,7 +36,6 @@ DELETE
 /api/rides/ride_id
 
 GET
-/api/comments/comment_id
 /api/rides/:ride_id/comments
 
 POST
@@ -47,4 +46,35 @@ PATCH
 
 DELETE
 /api/comments/comment_id
+```
+
+```js
+## Queries
+
+GET
+
+- [ ] /api/rides?order=asc
+*defaults to desc and ordered by created_at
+
+- [ ] /api/rides?sorted_by=joins*
+*defaults to created_at 
+
+- [ ] /api/rides?sorted_by=joins&order=asc
+
+## Filters
+
+GET
+
+- [ ] /api/rides?author=raofRides
+
+- [ ] /api/rides?ride_type=mountain
+*defaults to road and ordered by created_at
+
+- [ ] /api/rides?exprience_level=advanced
+*defaults to beginner and ordered by created_at
+
+- [ ] /api/rides?location=chester
+*defaults to machester
+
+- [ ] /api/rides?joins=5
 ```

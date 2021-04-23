@@ -211,7 +211,8 @@ describe("/api", () => {
 									description: expect.any(String),
 									experience_level: expect.any(String),
 									created_at: expect.any(String),
-									joins: expect.any(Number),
+									joins: expect.any( Number ),
+									location: expect.any(String)
 								})
 							)
 						})
@@ -258,9 +259,81 @@ describe("/api", () => {
 							} )
 						} )
 				})
-
-				
-				
+				test( "200: filters the results of rides by ride_type", () => {
+					return request( app )
+						.get( "/api/rides?ride_type=road" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 3 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.ride_type ).toBe( "road" )
+							} )
+						} )
+				} )
+				test( "200: filters the results of rides by experience_level", () => {
+					return request( app )
+						.get( "/api/rides?experience_level=beginner" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.experience_level ).toBe( "beginner" )
+							} )
+						} )
+				} )
+				test( "200: filters the results of rides by ride_type & experience_level", () => {
+					return request( app )
+						.get( "/api/rides?ride_type=cross%20country&experience_level=beginner" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							rides.forEach( ( ride ) => {
+								expect( ride.ride_type ).toBe( "cross country" )
+								expect( ride.experience_level ).toBe( "beginner" )
+								expect(ride).toHaveProperty("author", "description", "joins", "title", "ride_date", "route_data")
+							} )
+						} )
+				} )
+				test( "200: filters the results of rides by location", () => {
+					return request( app )
+						.get( "/api/rides?location=Manchester" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.location ).toBe( "Manchester" )
+							} )
+						} )
+				} )
+				test( "200: filters the results of rides by location & experience_level", () => {
+					return request( app )
+						.get( "/api/rides?location=Manchester&experience_level=intermediate" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.location ).toBe( "Manchester" )
+								expect( ride.experience_level ).toBe( "intermediate" )
+							} )
+						} )
+				} )
+				test( "200: filters the results of rides by location & experience_level", () => {
+					return request( app )
+						.get( "/api/rides?location=Sheffield&ride_type=road" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.location ).toBe( "Sheffield" )
+								expect( ride.experience_level ).toBe( "intermediate" )
+							} )
+						} )
+				} )
 			})
 		} )
 		describe("POST - /ride", () => {
@@ -275,6 +348,7 @@ describe("/api", () => {
 					experience_level: "advanced",
 					created_at: new Date(),
 					joins: 0,
+					location: "Chester"
 				}
 				return request(app)
 					.post("/api/rides")
@@ -292,6 +366,7 @@ describe("/api", () => {
 							experience_level: "advanced",
 							created_at: expect.any(String),
 							joins: 0,
+							location: "Chester"
 						})
 					})
 			})
@@ -314,6 +389,7 @@ describe("/api", () => {
 							experience_level: "beginner",
 							created_at: "2020-09-28T20:16:03.389Z",
 							joins: 10,
+							location: "Sheffield"
 						})
 					})
 			})
@@ -336,6 +412,7 @@ describe("/api", () => {
 							experience_level: "intermediate",
 							created_at: "2020-09-28T20:16:03.389Z",
 							joins: 9,
+							location: "Manchester"
 						})
 					})
 			})

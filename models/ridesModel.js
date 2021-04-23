@@ -1,6 +1,6 @@
 const connection = require( "../db/connection" )
 
-exports.fetchRides = (  {sort_by, order, author } ) => {
+exports.fetchRides = (  {sort_by, order, author, ride_type, experience_level, location } ) => {
 	return connection.select( "rides.*" )
 		.from( "rides" )
 		.count( "comments.comment_id", { as: "comment_count " } )
@@ -10,6 +10,15 @@ exports.fetchRides = (  {sort_by, order, author } ) => {
 		.modify( query => {
 			if ( author ) {
 				query.where("rides.author", author)
+			}
+			if ( ride_type ) {
+				query.where({ride_type})
+			}
+			if ( experience_level ) {
+				query.where({experience_level})
+			}
+			if ( location ) {
+				query.where({location})
 			}
 		})
 		.returning( "*" )

@@ -68,11 +68,8 @@ GET
 - [ ] /api/rides?author=raofRides
 
 - [ ] /api/rides?ride_type=mountain
-*defaults to road and ordered by created_at
 
 - [ ] /api/rides?exprience_level=advanced
-*defaults to beginner and ordered by created_at
 
 - [ ] /api/rides?location=chester
-*defaults to machester
 ```

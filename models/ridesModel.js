@@ -43,10 +43,11 @@ exports.postRide = (newRide) => {
 	return connection("rides").insert(newRide).returning("*")
 }
 
-exports.patchRideById = (ride_id, joins) => {
+exports.patchRideById = (ride_id, joins, attendees) => {
 	return connection( "rides" )
 		.where( { ride_id } )
 		.increment( { joins } || 0 )
+		.update({ attendees })
 		.returning( "*" )
 		.then( ( [ride] ) => {
 			return ride

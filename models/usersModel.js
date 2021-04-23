@@ -19,9 +19,6 @@ exports.patchUserByUsername = ( username, avatar_url, location, password ) => {
 		.where( { username } )
 		.update( { avatar_url, location, password })
 		.returning( "*" )
-		.then( ( [ user ] ) => {
-			return user
-		})
 }
 
 exports.deleteUserByUsername = (username) => {

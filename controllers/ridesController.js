@@ -33,8 +33,8 @@ exports.insertRide = (req, res, next) => {
 
 exports.updateRideById = ( req, res, next ) => {
 	const { ride_id } = req.params
-	const { joins } = req.body
-	patchRideById( ride_id, joins ).then( ( ride ) => {
+	const { joins, attendees } = req.body
+	patchRideById( ride_id, joins, attendees ).then( ( ride ) => {
 		res.status(200).send({ride})
 	} )
 		.catch(err => next(err))

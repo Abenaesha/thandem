@@ -10,7 +10,7 @@ exports.up = function(knex) {
 		rideTable.string( "experience_level" ).notNullable()
 		rideTable.integer( "joins" ).defaultTo( 0 )
 		rideTable.string("location").notNullable()
-		// rideTable.string("attendees").references("users.username")
+		rideTable.specificType("attendees", "text[]")
 		rideTable.timestamp("created_at").defaultTo(knex.fn.now())
 	})
 }

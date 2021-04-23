@@ -212,7 +212,8 @@ describe("/api", () => {
 									experience_level: expect.any(String),
 									created_at: expect.any(String),
 									joins: expect.any( Number ),
-									location: expect.any(String)
+									location: expect.any( String ),
+									attendees: expect.any(Array)
 								})
 							)
 						})
@@ -388,7 +389,8 @@ describe("/api", () => {
 					experience_level: "advanced",
 					created_at: new Date(),
 					joins: 0,
-					location: "Chester"
+					location: "Chester",
+					attendees: []
 				}
 				return request(app)
 					.post("/api/rides")
@@ -406,7 +408,8 @@ describe("/api", () => {
 							experience_level: "advanced",
 							created_at: expect.any(String),
 							joins: 0,
-							location: "Chester"
+							location: "Chester",
+							attendees: []
 						})
 					})
 			})
@@ -429,7 +432,8 @@ describe("/api", () => {
 							experience_level: "beginner",
 							created_at: "2020-09-28T20:16:03.389Z",
 							joins: 10,
-							location: "Sheffield"
+							location: "Sheffield",
+							attendees: ["raofRides"]
 						})
 					})
 			})
@@ -438,7 +442,7 @@ describe("/api", () => {
 			test("200: PATCH - responds with an updated ride object", () => {
 				return request(app)
 					.patch("/api/rides/2")
-					.send({ joins: 9 })
+					.send({ joins: 1, attendees: ["rollingDan"] })
 					.expect(200)
 					.then(({ body: { ride } }) => {
 						expect(ride).toEqual({
@@ -451,8 +455,9 @@ describe("/api", () => {
 							description: "anyone want to join me on a loop around manchester",
 							experience_level: "intermediate",
 							created_at: "2020-09-28T20:16:03.389Z",
-							joins: 9,
-							location: "Manchester"
+							joins: 1,
+							location: "Manchester",
+							attendees: ["rollingDan"]
 						})
 					})
 			})

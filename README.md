@@ -6,46 +6,46 @@ Basic endpoints for testing
 
 ```js
 GET
-/api
+- [ ] /api
 
 GET
-/api/users
-/api/users/:username
+- [ ] /api/users
+- [ ] /api/users/:username
 
 POST
-/api/users
+- [ ] /api/users
 
 PATCH
-/api/users/:username
+- [ ] /api/users/:username
 
 DELETE
-/api/users/:username
+- [ ] /api/users/:username
 
 GET
-/api/rides
-/api/rides/:ride_id
-/api/users/:username/rides *
+- [ ] /api/rides
+- [ ] /api/rides/:ride_id
+- [ ] /api/users/:username/rides *
 
 POST
-/api/rides
+- [ ] /api/rides
 
 PATCH
-/api/rides/:ride_id
+- [ ] /api/rides/:ride_id
 
 DELETE
-/api/rides/ride_id
+- [ ] /api/rides/ride_id
 
 GET
-/api/rides/:ride_id/comments
+- [ ] /api/rides/:ride_id/comments
 
 POST
-/api/rides/:ride_id/comments
+- [ ] /api/rides/:ride_id/comments
 
 PATCH
-/api/comments/comment_id
+- [ ] /api/comments/comment_id
 
 DELETE
-/api/comments/comment_id
+- [ ] /api/comments/comment_id
 ```
 
 ```js

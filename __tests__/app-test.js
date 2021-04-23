@@ -258,6 +258,46 @@ describe("/api", () => {
 								expect( ride.author ).toBe( "raofRides" )
 							} )
 						} )
+				} )
+				test( "200: filters the results of rides by author & ride_type", () => {
+					return request( app )
+						.get( "/api/rides?author=raofRides&ride_type=road" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.author ).toBe( "raofRides" )
+								expect( ride.ride_type ).toBe( "road" )
+							} )
+						} )
+				} )
+				test( "200: filters the results of rides by author & experience_level", () => {
+					return request( app )
+						.get( "/api/rides?author=rollingDan&experience_level=beginner" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.author ).toBe( "rollingDan" )
+								expect( ride.experience_level ).toBe( "beginner" )
+							} )
+						} )
+				} )
+				test( "200: filters the results of rides by author & experience_level", () => {
+					return request( app )
+						.get( "/api/rides?author=rollingDan&experience_level=beginner&location=Sheffield" )
+						.expect( 200 )
+						.then( ( { body: { rides } } ) => {
+							expect( rides ).toHaveLength( 1 )
+							expect( Array.isArray( rides ) ).toBe( true )
+							rides.forEach( ( ride ) => {
+								expect( ride.author ).toBe( "rollingDan" )
+								expect( ride.experience_level ).toBe( "beginner" )
+								expect(ride.location).toBe("Sheffield")
+							} )
+						} )
 				})
 				test( "200: filters the results of rides by ride_type", () => {
 					return request( app )

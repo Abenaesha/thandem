@@ -8,7 +8,7 @@ module.exports = [
 		description: "anyone want to join me on a loop from chester to manchester",
 		experience_level: "advanced",
 		created_at: 1611324563389,
-		votes: 5
+		joins: 5
 	},
 	{
 		author: "raofRides",
@@ -19,7 +19,7 @@ module.exports = [
 		description: "anyone want to join me on a loop around manchester",
 		experience_level: "intermediate",
 		created_at: 1601324163389,
-		votes: 0
+		joins: 0
 	},
 	{
 		author: "rollingDan",
@@ -30,6 +30,6 @@ module.exports = [
 		description: "anyone in the sheffield area want to join me on a loop?",
 		experience_level: "beginner",
 		created_at: 1601324163389,
-		votes: -10
+		joins: 10
 	},
 ]

@@ -75,6 +75,4 @@ GET
 
 - [ ] /api/rides?location=chester
 *defaults to machester
-
-- [ ] /api/rides?joins=5
 ```

@@ -211,9 +211,42 @@ describe("/api", () => {
 									description: expect.any(String),
 									experience_level: expect.any(String),
 									created_at: expect.any(String),
-									votes: expect.any(Number),
+									joins: expect.any(Number),
 								})
 							)
+						})
+					})
+			})
+		} )
+		describe("POST - /ride", () => {
+			test("201: POST - returns an object with new ride", () => {
+				const input = {
+					author: "t0gden",
+					ride_date: new Date(1619324193389),
+					route_data: "Wales hills",
+					ride_type: "mountain",
+					title: "evening ride",
+					description: "amazing bike adventure in Wales",
+					experience_level: "advanced",
+					created_at: new Date(),
+					joins: 0,
+				}
+				return request(app)
+					.post("/api/rides")
+					.send(input)
+					.expect(201)
+					.then(({ body: { newRide } }) => {
+						expect(newRide).toEqual({
+							ride_id: 5,
+							author: "t0gden",
+							ride_date: "2021-04-25T04:16:33.389Z",
+							route_data: "Wales hills",
+							ride_type: "mountain",
+							title: "evening ride",
+							description: "amazing bike adventure in Wales",
+							experience_level: "advanced",
+							created_at: expect.any(String),
+							joins: 0,
 						})
 					})
 			})
@@ -235,7 +268,7 @@ describe("/api", () => {
                 "anyone in the sheffield area want to join me on a loop?",
 							experience_level: "beginner",
 							created_at: "2020-09-28T20:16:03.389Z",
-							votes: -10,
+							joins: 10,
 						})
 					})
 			})
@@ -259,41 +292,8 @@ describe("/api", () => {
 								description: expect.any(String),
 								experience_level: expect.any(String),
 								created_at: expect.any(String),
-								votes: expect.any(Number),
+								joins: expect.any(Number),
 							})
-						})
-					})
-			})
-		})
-		describe("POST - /ride", () => {
-			test("201: POST - returns an object with new ride", () => {
-				const input = {
-					author: "t0gden",
-					ride_date: new Date(1619324193389),
-					route_data: "Wales hills",
-					ride_type: "mountain",
-					title: "evening ride",
-					description: "amazing bike adventure in Wales",
-					experience_level: "advanced",
-					created_at: new Date(),
-					votes: 0,
-				}
-				return request(app)
-					.post("/api/rides")
-					.send(input)
-					.expect(201)
-					.then(({ body: { newRide } }) => {
-						expect(newRide).toEqual({
-							ride_id: 5,
-							author: "t0gden",
-							ride_date: "2021-04-25T04:16:33.389Z",
-							route_data: "Wales hills",
-							ride_type: "mountain",
-							title: "evening ride",
-							description: "amazing bike adventure in Wales",
-							experience_level: "advanced",
-							created_at: expect.any(String),
-							votes: 0,
 						})
 					})
 			})
@@ -302,7 +302,7 @@ describe("/api", () => {
 			test("200: PATCH - responds with an updated ride object", () => {
 				return request(app)
 					.patch("/api/rides/2")
-					.send({ votes: 99 })
+					.send({ joins: 9 })
 					.expect(200)
 					.then(({ body: { ride } }) => {
 						expect(ride).toEqual({
@@ -315,7 +315,7 @@ describe("/api", () => {
 							description: "anyone want to join me on a loop around manchester",
 							experience_level: "intermediate",
 							created_at: "2020-09-28T20:16:03.389Z",
-							votes: 99,
+							joins: 9,
 						})
 					})
 			})
@@ -391,7 +391,7 @@ describe("/api", () => {
 					.then( ( { body: { comment } } ) => {
 						expect( comment ).toHaveProperty( "author" )
 						expect( comment ).toHaveProperty( "ride_id" )
-						//expect( comment ).toHaveProperty( "joins" )
+						//expect( comment ).toHaveProperty( "votes" )
 						expect( comment ).toEqual( {
 							comment_id: 4,
 							author: "t0gden",

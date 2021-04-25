@@ -1,5 +1,6 @@
 const { getCommentsByRideId, insertCommentByRideId } = require( "../controllers/commentsController" )
 const { getRides, getRideById, insertRide, updateRideById, removeRideById } = require( "../controllers/ridesController" )
+const { getAttendeesByRideId, insertAttendeeByRideId } = require("../controllers/attendeesController")
 
 const ridesRouter = require( "express" ).Router()
 
@@ -18,7 +19,13 @@ ridesRouter
 ridesRouter
 	.route( "/:ride_id/comments" )
 	.get( getCommentsByRideId )
-	.post(insertCommentByRideId)
+	.post( insertCommentByRideId )
+	
+ridesRouter
+	.route( "/:ride_id/attendees" )
+	.get( getAttendeesByRideId )
+	.post(insertAttendeeByRideId)
+
 
 
 module.exports = ridesRouter

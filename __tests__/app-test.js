@@ -213,7 +213,6 @@ describe("/api", () => {
 									created_at: expect.any(String),
 									joins: expect.any( Number ),
 									location: expect.any( String ),
-									attendees: expect.any(Array)
 								})
 							)
 						})
@@ -390,7 +389,6 @@ describe("/api", () => {
 					created_at: new Date(),
 					joins: 0,
 					location: "Chester",
-					attendees: []
 				}
 				return request(app)
 					.post("/api/rides")
@@ -409,7 +407,6 @@ describe("/api", () => {
 							created_at: expect.any(String),
 							joins: 0,
 							location: "Chester",
-							attendees: []
 						})
 					})
 			})
@@ -433,7 +430,6 @@ describe("/api", () => {
 							created_at: "2020-09-28T20:16:03.389Z",
 							joins: 10,
 							location: "Sheffield",
-							attendees: ["raofRides"]
 						})
 					})
 			})
@@ -442,7 +438,7 @@ describe("/api", () => {
 			test("200: PATCH - responds with an updated ride object", () => {
 				return request(app)
 					.patch("/api/rides/2")
-					.send({ joins: 1, attendees: ["rollingDan"] })
+					.send({ joins: 1 })
 					.expect(200)
 					.then(({ body: { ride } }) => {
 						expect(ride).toEqual({
@@ -457,7 +453,6 @@ describe("/api", () => {
 							created_at: "2020-09-28T20:16:03.389Z",
 							joins: 1,
 							location: "Manchester",
-							attendees: ["rollingDan"]
 						})
 					})
 			})
@@ -473,9 +468,64 @@ describe("/api", () => {
 			})
 		})
 	} )
-	describe( "/comments", () => {
-		describe( "GET - /ride_id/comments", () => {
+	describe("/attendees", () => {
+		describe("GET - /rides/ride_id/attendees", () => {
+			test("200: GET - returns a list of attendees in a ride", () => {
+				return request( app )
+					.get( "/api/rides/1/attendees" )
+					.expect( 200 )
+					.then( ( { body: { attendees } } ) => {
+						expect( attendees ).toHaveLength( 2 )
+						attendees.forEach( attendee => {
+							expect( attendee ).toEqual(
+								expect.objectContaining( {
+									attendee_id: expect.any( Number ),
+									author: expect.any( String ),
+									ride_id: expect.any( Number ),
+									name: expect.any(String)
+								})
+							)
+						})
+					})
+			})
+		} )
+		describe( "POST - /rides/ride_id/attendees", () => {
 			test("should ", () => {
+				const input = {
+					author: "rollingDan",
+					ride_id: 3,
+					name: "Dan",
+				}
+				return request( app )
+					.post( "/api/rides/3/attendees" )
+					.send(input)
+					.expect( 201 )
+					.then( ( { body: { newAttendee } } ) => {
+						expect( newAttendee ).toMatchObject( {
+							attendee_id: 3,
+							author: "rollingDan",
+							ride_id: 3,
+							name: "Dan",
+						})
+					} )
+			} )
+		} )
+		describe("DELETE - /attendees/attendee_id", () => {
+			test("200: DELETE - responds with a message for a successful delete request for a valid attendee id", () => {
+				return request( app )
+					.delete( "/api/attendees/1" )
+					.expect( 200 )
+					.then( ( { body: { msg } } ) => {
+						expect(msg).toBe("Attendee with id 1 has been successfully deleted")
+					})
+			})
+			
+		})
+		
+	})
+	describe( "/comments", () => {
+		describe( "GET - /rides/ride_id/comments", () => {
+			test("200: GET - returns all comments in a ride", () => {
 				return request( app )
 					.get( "/api/rides/1/comments" )
 					.expect( 200 )

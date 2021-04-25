@@ -18,7 +18,6 @@ module.exports = [
 		created_at: 1611324163389,
 		joins: 5,
 		location: "Chester",
-		attendees: ["raofRides", "rollingDan"]
 	},
 	{
 		author: "raofRides",
@@ -31,7 +30,6 @@ module.exports = [
 		created_at: 1601324163389,
 		joins: 0,
 		location: "Manchester",
-		attendees: []
 	},
 	{
 		author: "rollingDan",
@@ -44,7 +42,6 @@ module.exports = [
 		created_at: 1601324163389,
 		joins: 10,
 		location: "Sheffield",
-		attendees: ["raofRides"]
 	},
 	{
 		author: "rollingDan",
@@ -57,6 +54,5 @@ module.exports = [
 		created_at: 1601324162389,
 		joins: 50,
 		location: "Sheffield",
-		attendees: []
 	},
 ]

@@ -7,12 +7,12 @@ const {
   deleteRideById,
 } = require("../models/ridesModel")
 
-exports.getRides = (req, res, next) => {
-  fetchRides()
-    .then((rides) => {
-      res.status(200).send({ rides })
-    })
-    .catch((err) => next(err))
+
+exports.getRides = ( req, res, next ) => {
+	fetchRides(req.query).then( ( rides ) => {
+		res.status(200).send(rides)
+	} )
+		.catch( err => next( err ) )
 }
 
 exports.getRideById = (req, res, next) => {
@@ -25,13 +25,11 @@ exports.getRideById = (req, res, next) => {
 }
 
 exports.getRidesByUsername = (req, res, next) => {
-  const { username } = req.params
-  fetchRidesByUsername(username)
-    .then((rides) => {
-      console.log(rides)
-      res.status(200).send({ rides })
-    })
-    .catch((err) => next(err))
+	const { username } = req.params
+	fetchRidesByUsername( username ).then( rides => {
+		res.status( 200 ).send( { rides } )
+	} )
+		.catch( err => next( err ) )
 }
 
 exports.insertRide = (req, res, next) => {
@@ -42,14 +40,14 @@ exports.insertRide = (req, res, next) => {
     .catch((err) => next(err))
 }
 
-exports.updateRideById = (req, res, next) => {
-  const { ride_id } = req.params
-  const { votes } = req.body
-  patchRideById(ride_id, votes)
-    .then((ride) => {
-      res.status(200).send({ ride })
-    })
-    .catch((err) => next(err))
+
+exports.updateRideById = ( req, res, next ) => {
+	const { ride_id } = req.params
+	const { joins, attendees } = req.body
+	patchRideById( ride_id, joins, attendees ).then( ( ride ) => {
+		res.status(200).send({ride})
+	} )
+		.catch(err => next(err))
 }
 
 exports.removeRideById = (req, res, next) => {

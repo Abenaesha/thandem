@@ -1,5 +1,5 @@
 process.env.NODE_ENV = "test"
-const request = require("supertest")
+const request = require( "supertest" )
 const app = require("../app")
 const connection = require("../db/connection")
 
@@ -107,82 +107,82 @@ describe("/api", () => {
           .send({
             avatar_url:
               "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
-          })
-          .expect(200)
-          .then(({ body: { user } }) => {
-            expect(user).toEqual({
-              username: "t0gden",
-              first_name: "Tom",
-              last_name: "Ogden",
-              email: "example1@gmail.com",
-              password: "abcde1",
-              avatar_url:
+					})
+					.expect(200)
+					.then(({ body: { user } }) => {
+						expect(user).toEqual({
+							username: "t0gden",
+							first_name: "Tom",
+							last_name: "Ogden",
+							email: "example1@gmail.com",
+							password: "abcde1",
+							avatar_url:
                 "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
-              location: "Chester",
-              routes_data: null,
-              bike_type: "All",
-              rider_level: "Intermediate",
-            })
-          })
-      })
-      test("200: PATCH - responds with an updated user location object", () => {
-        return request(app)
-          .patch("/api/users/t0gden")
-          .send({ location: "Leeds" })
-          .expect(200)
-          .then(({ body: { user } }) => {
-            expect(user).toEqual({
-              username: "t0gden",
-              first_name: "Tom",
-              last_name: "Ogden",
-              email: "example1@gmail.com",
-              password: "abcde1",
-              avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
-              location: "Leeds",
-              routes_data: null,
-              bike_type: "All",
-              rider_level: "Intermediate",
-            })
-          })
-      })
-      test("200: PATCH - responds with an updated user password object", () => {
-        return request(app)
-          .patch("/api/users/t0gden")
-          .send({ password: "1edcba" })
-          .expect(200)
-          .then(({ body: { user } }) => {
-            expect(user).toEqual({
-              username: "t0gden",
-              first_name: "Tom",
-              last_name: "Ogden",
-              email: "example1@gmail.com",
-              password: "1edcba",
-              avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
-              location: "Chester",
-              routes_data: null,
-              bike_type: "All",
-              rider_level: "Intermediate",
-            })
-          })
-      })
-      test("200: PATCH - responds with an updated user multiple elements object", () => {
-        return request(app)
-          .patch("/api/users/t0gden")
-          .send({
-            password: "northcoders2021",
-            location: "Manchester",
-            avatar_url:
+							location: "Chester",
+							routes_data: null,
+							bike_type: "All",
+							rider_level: "Intermediate",
+						})
+					})
+			})
+			test("200: PATCH - responds with an updated user location object", () => {
+				return request(app)
+					.patch("/api/users/t0gden")
+					.send({ location: "Leeds" })
+					.expect(200)
+					.then(({ body: { user } }) => {
+						expect(user).toEqual({
+							username: "t0gden",
+							first_name: "Tom",
+							last_name: "Ogden",
+							email: "example1@gmail.com",
+							password: "abcde1",
+							avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
+							location: "Leeds",
+							routes_data: null,
+							bike_type: "All",
+							rider_level: "Intermediate",
+						})
+					})
+			})
+			test("200: PATCH - responds with an updated user password object", () => {
+				return request(app)
+					.patch("/api/users/t0gden")
+					.send({ password: "1edcba" })
+					.expect(200)
+					.then(({ body: { user } }) => {
+						expect(user).toEqual({
+							username: "t0gden",
+							first_name: "Tom",
+							last_name: "Ogden",
+							email: "example1@gmail.com",
+							password: "1edcba",
+							avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
+							location: "Chester",
+							routes_data: null,
+							bike_type: "All",
+							rider_level: "Intermediate",
+						})
+					})
+			})
+			test("200: PATCH - responds with an updated user multiple elements object", () => {
+				return request(app)
+					.patch("/api/users/t0gden")
+					.send({
+						password: "northcoders2021",
+						location: "Manchester",
+						avatar_url:
               "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
-          })
-          .expect(200)
-          .then(({ body: { user } }) => {
-            expect(user).toEqual({
-              username: "t0gden",
-              first_name: "Tom",
-              last_name: "Ogden",
-              email: "example1@gmail.com",
-              password: "northcoders2021",
-              avatar_url:
+					})
+					.expect(200)
+					.then(({ body: { user } }) => {
+						expect(user).toEqual({
+							username: "t0gden",
+							first_name: "Tom",
+							last_name: "Ogden",
+							email: "example1@gmail.com",
+							password: "northcoders2021",
+							avatar_url:
                 "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
               location: "Manchester",
               routes_data: null,
@@ -317,30 +317,6 @@ describe("/api", () => {
           })
       })
     })
-    xdescribe("GET - /users/:username/rides", () => {
-      test("200: GET - returns a array of ride object by username", () => {
-        return request(app)
-          .get("/api/users/rollingDan/rides")
-          .expect(200)
-          .then(({ body: { rides } }) => {
-            expect(rides).toHaveLength(2)
-            rides.forEach((ride) => {
-              expect(ride).objectContaining({
-                ride_id: expect.any(Number),
-                author: expect.any(String),
-                ride_date: expect.any(String),
-                route_data: expect.any(String),
-                ride_type: expect.any(String),
-                title: expect.any(String),
-                description: expect.any(String),
-                experience_level: expect.any(String),
-                created_at: expect.any(String),
-                votes: expect.any(Number),
-              })
-            })
-          })
-      })
-    })
     describe("POST - /ride", () => {
       test("201: POST - returns an object with new ride", () => {
         const input = {
@@ -434,3 +410,4 @@ describe("/api", () => {
     })
   })
 })
+

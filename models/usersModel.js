@@ -1,4 +1,3 @@
-const { getUsers } = require("../controllers/usersController")
 const connection = require("../db/connection")
 
 exports.fetchUsers = () => {
@@ -29,7 +28,6 @@ exports.patchUserByUsername = (username, avatar_url, location, password) => {
         return Promise.reject({ status: 404, msg: `${username} not found` })
       } else return user
     })
-}
 
 exports.deleteUserByUsername = (username) => {
   return connection("users")

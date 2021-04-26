@@ -8,8 +8,9 @@ exports.up = function(knex) {
 		rideTable.string( "title" ).notNullable()
 		rideTable.string("description").notNullable()
 		rideTable.string( "experience_level" ).notNullable()
-		rideTable.integer("votes").defaultTo(0)
-		// rideTable.string("attendees").references("users.username")
+		rideTable.integer( "joins" ).defaultTo( 0 )
+		rideTable.string("location").notNullable()
+		// rideTable.specificType("attendees", "text[]")
 		rideTable.timestamp("created_at").defaultTo(knex.fn.now())
 	})
 }

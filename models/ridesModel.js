@@ -1,7 +1,30 @@
 const connection = require("../db/connection")
 
-exports.fetchRides = () => {
-  return connection("rides").select("*")
+exports.fetchRides = (  {sort_by, order, author, ride_type, experience_level, location } ) => {
+	return connection.select( "rides.*" )
+		.from( "rides" )
+		.count( "comments.comment_id", { as: "comment_count " } )
+		.leftJoin( "comments", "comments.ride_id", "rides.ride_id" )
+		.groupBy( "rides.ride_id" )
+		.orderBy( sort_by || "created_at", order || "desc" )
+		.modify( query => {
+			if ( author ) {
+				query.where("rides.author", author)
+			}
+			if ( ride_type ) {
+				query.where({ride_type})
+			}
+			if ( experience_level ) {
+				query.where({experience_level})
+			}
+			if ( location ) {
+				query.where({location})
+			}
+		})
+		.returning( "*" )
+		.then( rides => {
+			return { rides, total_count: rides.length }
+		})
 }
 
 exports.fetchRideById = (ride_id) => {
@@ -18,12 +41,10 @@ exports.fetchRideById = (ride_id) => {
     })
 }
 
-exports.fetchRidesByUsername = (username) => {
-  return connection("rides")
-    .where({ username })
-    .then((rides) => {
-      return rides
-    })
+exports.fetchRidesByUsername = ( username,  ) => {
+	return connection( "rides" ).where( { username } ).then( ( rides ) => {
+		return rides
+	})
 }
 
 exports.postRide = (newRide) => {
@@ -43,7 +64,6 @@ exports.patchRideById = (ride_id, votes) => {
         })
       } else return ride
     })
-}
 
 exports.deleteRideById = (ride_id) => {
   return connection("rides")

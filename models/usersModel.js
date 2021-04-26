@@ -10,7 +10,9 @@ exports.postUser = ( newUser ) => {
 
 exports.fetchUserByUsername = ( username ) => {
 	return connection( "users" ).where( { username } ).then( ( user ) => {
-		return user[0]
+		if (user.length === 0) {
+			return Promise.reject({ status: 404, msg: `${username} not found` })
+		} else return user[0]
 	})
 }
 
@@ -19,6 +21,12 @@ exports.patchUserByUsername = ( username, avatar_url, location, password ) => {
 		.where( { username } )
 		.update( { avatar_url, location, password })
 		.returning( "*" )
+		.then(([user]) => {
+			if ("location" === undefined in user) {
+				return Promise.reject({ status: 404, msg: `${username} not found` })
+			} else 
+				return user
+		})
 }
 
 exports.deleteUserByUsername = (username) => {
@@ -26,6 +34,9 @@ exports.deleteUserByUsername = (username) => {
 		.where({username})
 		.del()
 		.then( () => {
-			return {msg: `${username} has been successfully deleted`}
+			if (!username) {
+				return Promise.reject({ status: 404, msg: `${username} not found` })
+			} else 
+				return { msg: `${ username } has been successfully deleted` }
 		})
 }

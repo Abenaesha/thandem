@@ -28,8 +28,14 @@ exports.fetchRides = (  {sort_by, order, author, ride_type, experience_level, lo
 }
 
 exports.fetchRideById = ( ride_id ) => {
-	return connection( "rides" ).where( { ride_id } ).then( (ride) => {
-		return ride[0]
+	return connection( "rides" ).where( { ride_id } ).then( ( ride ) => {
+		if (ride.length === 0) {
+			return Promise.reject({
+				status: 404,
+				msg: `Ride ID ${ride_id} not found`,
+			})
+		} else
+			return ride[0]
 	})
 }
 
@@ -49,8 +55,14 @@ exports.patchRideById = (ride_id, joins, attendees) => {
 		.increment( { joins } || 0 )
 		.update({ attendees })
 		.returning( "*" )
-		.then( ( [ride] ) => {
-			return ride
+		.then( ( [ ride ] ) => {
+			if ("author" === undefined in ride) {
+				return Promise.reject({
+					status: 404,
+					msg: `Ride ID ${ride_id} not found`,
+				})
+			} else
+				return ride
 		})
 }
 
@@ -59,6 +71,9 @@ exports.deleteRideById = ( ride_id ) => {
 		.where( { ride_id } )
 		.del()
 		.then( () => {
-			return { msg: `${ ride_id } has been successfully deleted` }
+			if (!ride_id) {
+				return Promise.reject({ status: 404, msg: `Ride ID ${ride_id} not found` })
+			} else
+				return { msg: `${ ride_id } has been successfully deleted` }
 		})
 }

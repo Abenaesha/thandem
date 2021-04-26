@@ -26,7 +26,7 @@ exports.getUserByUsername = ( req, res, next ) => {
 exports.updateUserByUsername = ( req, res, next ) => {
 	const { username } = req.params
 	const { avatar_url, location, password } = req.body
-	patchUserByUsername(username, avatar_url, location, password).then( ([user]) => {
+	patchUserByUsername(username, avatar_url, location, password).then( (user) => {
 		res.status( 200 ).send( { user } )
 	} )
 		.catch(err => next(err))

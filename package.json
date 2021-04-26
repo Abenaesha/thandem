@@ -1,7 +1,7 @@
 {
   "engines": {
     "node": ">=12"
-    },
+  },
   "devDependencies": {
     "eslint": "^7.24.0",
     "eslint-plugin-react": "^7.23.2",
@@ -25,14 +25,13 @@
     "migrate-rollback": "knex migrate:rollback",
     "start": "node listen.js"
   },
-
   "jest": {
     "setupFilesAfterEnv": [
       "jest-sorted"
     ]
   },
-  
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.95.4",
     "pg": "^8.6.0"

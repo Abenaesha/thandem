@@ -6,7 +6,7 @@
 // const connection = knex(dbConfig)
 
 // module.exports = connection
-console.log(process.env, "ENV")
+
 const ENV = process.env.NODE_ENV || "development"
 const knex = require("knex")
 

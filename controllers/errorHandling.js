@@ -17,6 +17,6 @@ exports.psqlErrorHandler = (err, req, res, next) => {
 	} else next(err)
 }
 
-exports.handle500s = (err, req, res) => {
+exports.handle500s = (err, req, res, next) => {
 	res.status(500).send({ msg: "Server Error" })
 }

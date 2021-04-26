@@ -2,14 +2,14 @@ exports.up = function (knex) {
 	return knex.schema.createTable( "users", ( userTable ) => {
 		userTable.string("username").primary().notNullable()
 		userTable.string("password")
-		userTable.string("email").unique().notNullable()
+		userTable.string("email").unique()
 		userTable.string("avatar_url")
 		userTable.string("first_name")
 		userTable.string("last_name")
 		userTable.string("location")
-		userTable.string("routes_data")
-		userTable.string("bike_type").notNullable()
-		userTable.string("rider_level").notNullable()
+		userTable.specificType("routes_data", "text[]")
+		userTable.string("bike_type")
+		userTable.string("rider_level")
 	})
 }
 

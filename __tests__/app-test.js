@@ -7,7 +7,41 @@ const connection = require("../db/connection")
 beforeEach(() => connection.seed.run(), 20000)
 afterAll(() => connection.destroy())
 
-describe("/api", () => {
+describe( "/api", () => {
+	describe( "GET", () => {
+		it( "200: GET - responds with all the existing endpoints of the API", () => {
+			return request( app )
+				.get( "/api" )
+				.expect( 200 )
+				.then( ( { body } ) => {
+					expect( body ).toMatchObject( {
+						endpoints: {
+							"GET - /api": {
+								description:
+									"responds with a json object displaying all the existing endpoints of the API server",
+							},
+							"GET - /api/users": expect.any( Object ),
+							"POST - /api/users": expect.any(Object),
+							"GET - /api/users/:username": expect.any( Object ),
+							"PATCH - /api/users/:username": expect.any( Object ),
+							"DELETE - /api/users/:username": expect.any(Object),
+							"GET - /api/rides": expect.any( Object ),
+							"POST - /api/rides": expect.any( Object ),
+							"GET - /api/rides/:ride_id": expect.any( Object ),
+							"PATCH - /api/rides/:ride_id": expect.any( Object ),
+							"DELETE - /api/rides/:ride_id": expect.any( Object ),
+							"GET - /api/rides/:ride_id/attendees": expect.any( Object ),
+							"POST - /api/rides/:ride_id/attendees": expect.any( Object ),
+							"DELETE - /api/attendees/:attendee_id": expect.any( Object ),
+							"GET - /api/rides/:ride_id/comments": expect.any(Object),
+							"POST - /api/rides/:ride_id/comments": expect.any( Object ),
+							"PATCH - /api/comments/comment_id": expect.any( Object ),
+							"DELETE - /api/comments/:comment_id": expect.any( Object ),
+						},
+					} )
+				} )
+		} )
+	})
 	describe("/api/users", () => {
 		describe("GET - /users", () => {
 			test("200: returns an array of user objects", () => {

@@ -1,0 +1,287 @@
+{
+	"endpoints": {
+		"GET - /api": {
+			"description": "responds with a json object displaying all the existing endpoints of the API server"
+		},
+		"GET - /api/users": {
+			"description": "responds with an array of all users",
+			"queries": [],
+			"exampleResponse": {
+				"users": [
+					{
+						"username": "t0gden",
+						"password": "abcde1",
+						"email": "example1@gmail.com",
+						"avatar_url": "http://clipart-library.com/images/8TEjdRMEc.png",
+						"first_name": "Tom",
+						"last_name": "Ogden",
+						"location": "Chester",
+						"routes_data": null,
+						"bike_type": "All",
+						"rider_level": "Intermediate"
+					}
+				]
+			}
+		},
+		"POST - /api/users": {
+			"description": "Accepts an object to post a new user",
+			"example request": {
+				"username": "Dave3",
+				"first_name": "Dave",
+				"last_name": "NC",
+				"email": "dave3@gmail.com",
+				"password": "d3nc",
+				"avatar_url": "http://clipart-library.com/images/8TEjdRMEc.png",
+				"location": "Manchester",
+				"routes_data": null,
+				"bike_type": "Mountain Bike",
+				"rider_level": "Beginner"
+			},
+			"example response": {
+				"user": {
+					"username": "Dave3",
+					"first_name": "Dave",
+					"last_name": "NC",
+					"email": "dave3@gmail.com",
+					"password": "d3nc",
+					"avatar_url": "http://clipart-library.com/images/8TEjdRMEc.png",
+					"location": "Manchester",
+					"routes_data": null,
+					"bike_type": "Mountain Bike",
+					"rider_level": "Beginner"
+				}
+			}
+		},
+		"GET - /api/users/:username": {
+			"description": "responds with an object of a user's details",
+			"queries": [],
+			"exampleResponse": {
+				"user": {
+					"username": "raofRides",
+					"password": "abcde2",
+					"email": "example2@gmail.com",
+					"avatar_url": "http://clipart-library.com/images/yckAgeMRi.jpg",
+					"first_name": "Raof",
+					"last_name": "Benaesha",
+					"location": "Manchester",
+					"routes_data": null,
+					"bike_type": "Road",
+					"rider_level": "Beginner"
+				}
+			}
+		},
+		"PATCH - /api/users/:username": {
+			"description": "Accepts an object to update an ride's votes, sresponds with updated ride object",
+			"example request": {
+				"password": "northcoders2021",
+				"location": "Manchester",
+				"avatar_url": "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png"
+			},
+			"example response": {
+				"user": {
+					"username": "t0gden",
+					"password": "northcoders2021",
+					"email": "example1@gmail.com",
+					"avatar_url": "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
+					"first_name": "Tom",
+					"last_name": "Ogden",
+					"location": "Manchester",
+					"routes_data": null,
+					"bike_type": "All",
+					"rider_level": "Intermediate"
+				}
+			}
+		},
+		"DELETE - /api/users/:username": {
+			"msg": "User with id `username` has been successfully deleted"
+		},
+		"GET - /api/rides": {
+			"description": "responds with an array of all rides",
+			"queries": [
+				"author",
+				"ride_type",
+				"experience_level",
+				"location",
+				"sort_by",
+				"order"
+			],
+			"exampleResponse": {
+				"rides": [
+					{
+						"ride_id": 1,
+						"author": "t0gden",
+						"ride_date": "2021-02-03T03:49:23.389Z",
+						"route_data": "chester to manchester",
+						"ride_type": "road",
+						"title": "sunny road ride",
+						"description": "anyone want to join me on a loop from chester to manchester",
+						"experience_level": "advanced",
+						"joins": 5,
+						"location": "Chester",
+						"created_at": "2021-01-22T14:09:23.389Z",
+						"comment_count": "3"
+					}
+				]
+			}
+		},
+		"POST - /api/rides": {
+			"description": "Accepts an object to post a new ride",
+			"example request": {
+				"author": "t0gden",
+				"ride_date": "new Date(1619324193389)",
+				"route_data": "Wales hills",
+				"ride_type": "mountain",
+				"title": "evening ride",
+				"description": "amazing bike adventure in Wales",
+				"experience_level": "advanced",
+				"created_at": "new Date()",
+				"joins": 0,
+				"location": "Chester"
+			},
+			"example response": {
+				"user": {
+					"ride_id": 5,
+					"author": "t0gden",
+					"ride_date": "new Date(1619324193389)",
+					"route_data": "Wales hills",
+					"ride_type": "mountain",
+					"title": "evening ride",
+					"description": "amazing bike adventure in Wales",
+					"experience_level": "advanced",
+					"created_at": "new Date()",
+					"joins": 0,
+					"location": "Chester"
+				}
+			}
+		},
+		"GET - /api/rides/:ride_id": {
+			"description": "responds with an object of ride details for specific ride_id",
+			"queries": [],
+			"example response": {
+				"ride": {
+					"ride_id": 1,
+					"author": "t0gden",
+					"ride_date": "2021-02-03T03:49:23.389Z",
+					"route_data": "chester to manchester",
+					"ride_type": "road",
+					"title": "sunny road ride",
+					"description": "anyone want to join me on a loop from chester to manchester",
+					"experience_level": "advanced",
+					"joins": 5,
+					"location": "Chester",
+					"created_at": "2021-01-22T14:09:23.389Z"
+				}
+			}
+		},
+		"PATCH - /api/rides/:ride_id": {
+			"description": "Accepts an object to update an ride's votes, sresponds with updated ride object",
+			"example request": {
+				"joins": 1
+			},
+			"example response": {
+				"ride": {
+					"ride_id": 2,
+					"author": "raofRides",
+					"ride_date": "2021-02-03T05:12:43.389Z",
+					"route_data": "Manchester",
+					"ride_type": "road",
+					"title": "Manchester loop",
+					"description": "anyone want to join me on a loop around manchester",
+					"experience_level": "intermediate",
+					"created_at": "2020-09-28T20:16:03.389Z",
+					"joins": 1,
+					"location": "Manchester"
+				}
+			}
+		},
+		"DELETE - /api/rides/:ride_id": {
+			"msg": "Ride with id `ride_id` has been successfully deleted"
+		},
+		"GET - /api/rides/:ride_id/attendees": {
+			"description": "responds with an array of attendees joined a ride",
+			"example response": {
+				"attendees": [
+					{
+						"attendee_id": 1,
+						"author": "hannah123",
+						"ride_id": 1,
+						"name": "Hannah"
+					}
+				]
+			}
+		},
+		"POST - /api/rides/:ride_id/attendees": {
+			"description": "Accepts an object to post a comment to an ride and responds with comment data posted",
+			"example request": {
+				"author": "rollingDan",
+				"ride_id": 3,
+				"name": "Dan"
+			},
+			"example response": {
+				"attendee": {
+					"attendee_id": 3,
+					"author": "rollingDan",
+					"ride_id": 3,
+					"name": "Dan"
+				}
+			}
+		},
+		"DELETE - /api/attendees/:attendee_id": {
+			"msg": "Attendee with id `attendee_id` has been successfully deleted"
+		},
+		"GET - /api/rides/:ride_id/comments": {
+			"description": "responds with an array of comments posted to an ride",
+			"example response": {
+				"comments": [
+					{
+						"comment_id": 1,
+						"author": "hannah123",
+						"ride_id": 1,
+						"votes": 10,
+						"created_at": "2022-12-18T00:42:43.389Z",
+						"body": "would love to join but busy this day, maybe next time!"
+					}
+				]
+			}
+		},
+		"POST - /api/rides/:ride_id/comments": {
+			"description": "Accepts an object to post a comment to an ride and responds with comment data posted",
+			"example request": {
+				"body": "NEW - Do not forget to commit regularly!",
+				"ride_id": 1,
+				"author": "t0gden",
+				"votes": 0,
+				"created_at": "new Date()"
+			},
+			"example response": {
+				"comment": {
+					"comment_id": 5,
+					"body": "NEW - Do not forget to commit regularly!",
+					"ride_id": 1,
+					"author": "t0gden",
+					"votes": 0,
+					"created_at": "new Date()"
+				}
+			}
+		},
+		"PATCH - /api/comments/comment_id": {
+			"description": "Accepts an object to update a comment's votes and responds with the updated comment",
+			"example request": {
+				"body": "Let's go guys!"
+			},
+			"example response": {
+				"comment": {
+					"comment_id": 4,
+					"author": "t0gden",
+					"ride_id": 2,
+					"votes": 1,
+					"body": "Let's go guys!",
+					"created_at": "expect.any(String)"
+				}
+			}
+		},
+		"DELETE - /api/comments/:comment_id": {
+			"msg": "Comment with id `comment_id` has been successfully deleted"
+		}
+	}
+}

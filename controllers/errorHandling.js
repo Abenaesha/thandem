@@ -17,6 +17,7 @@ exports.psqlErrorHandler = (err, req, res, next) => {
 	} else next(err)
 }
 
+// eslint-disable-next-line no-unused-vars
 exports.handle500s = (err, req, res, next) => {
 	res.status(500).send({ msg: "Server Error" })
 }

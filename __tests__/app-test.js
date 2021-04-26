@@ -61,7 +61,7 @@ describe( "/api", () => {
 									password: expect.any(String),
 									location: expect.any(String),
 									bike_type: expect.any(String),
-									rider_level: expect.any(String),
+									rider_level: expect.any( String ),
 								})
 							)
 						})
@@ -78,9 +78,9 @@ describe( "/api", () => {
 					password: "d3nc",
 					avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
 					location: "Manchester",
-					routes_data: null,
 					bike_type: "Mountain Bike",
 					rider_level: "Beginner",
+					routes_data: null
 				}
 				return request(app)
 					.post("/api/users")
@@ -129,6 +129,7 @@ describe( "/api", () => {
 							location: "Manchester",
 							bike_type: "Road",
 							rider_level: "Beginner",
+							routes_data: null
 						})
 					})
 			})

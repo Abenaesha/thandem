@@ -31,6 +31,7 @@ module.exports = [
 		location: "Sheffield",
 		bike_type: "All",
 		rider_level: "Advanced",
+		routes_data: []
 	},
 	{
 		username: "hannah123",

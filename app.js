@@ -5,7 +5,7 @@ const { handle405s, handle500s,	customErrorHandler,	psqlErrorHandler,  } = requi
 
 const app = express()
 app.use(cors())
-app.use(express.json())
+app.use( express.json() )
 app.use("/api", apiRouter)
 app.all( "/*", handle405s )
 app.use(customErrorHandler)

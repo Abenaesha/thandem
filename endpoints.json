@@ -1,5 +1,4 @@
 {
-	"endpoints": {
 		"GET - /api": {
 			"description": "responds with a json object displaying all the existing endpoints of the API server"
 		},
@@ -283,5 +282,4 @@
 		"DELETE - /api/comments/:comment_id": {
 			"msg": "Comment with id `comment_id` has been successfully deleted"
 		}
-	}
 }

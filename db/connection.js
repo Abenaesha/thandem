@@ -14,12 +14,13 @@ const dbConfig =
   ENV === "production"
   	? { 
   		client: "pg", 
-  		connection: { 
-  			connectionString: process.env.DATABASE_URL,
-  			ssl: {
-  				rejectUnauthorized: false,
-  			},
-  		}, 
+  		connection: {
+  			user: process.env.USER,
+  			host: process.env.HOST,
+  			database: process.env.DATABASE,
+  			password: process.env.PASSWORD,
+  			port: process.env.PORT,
+  		} 
   	}
   	: require( "../knexfile" )
     

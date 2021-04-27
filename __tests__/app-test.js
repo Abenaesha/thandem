@@ -674,7 +674,6 @@ describe( "/comments", () => {
 				body: "NEW - Do not forget to commit regularly!",
 				ride_id: 1,
 				author: "t0gden",
-				votes: 0,
 				created_at: new Date(),
 			}
 			return request( app )

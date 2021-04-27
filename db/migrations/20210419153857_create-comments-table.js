@@ -6,7 +6,7 @@ exports.up = function(knex) {
 		commentTable.integer("ride_id").references("rides.ride_id").onDelete("CASCADE")
 		commentTable.integer("votes").defaultTo(0)
 		commentTable.timestamp("created_at").defaultTo(knex.fn.now())
-		commentTable.text("body").notNullable()
+		commentTable.text( "body" ).notNullable()
 	})
 }
 

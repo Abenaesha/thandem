@@ -127,21 +127,19 @@
 			"description": "Accepts an object to post a new ride",
 			"example request": {
 				"author": "t0gden",
-				"ride_date": "new Date(1619324193389)",
+				"ride_date": "2021-01-22T14:09:23.389Z",
 				"route_data": "Wales hills",
 				"ride_type": "mountain",
 				"title": "evening ride",
 				"description": "amazing bike adventure in Wales",
 				"experience_level": "advanced",
-				"created_at": "new Date()",
-				"joins": 0,
 				"location": "Chester"
 			},
 			"example response": {
 				"user": {
 					"ride_id": 5,
 					"author": "t0gden",
-					"ride_date": "new Date(1619324193389)",
+					"ride_date": "2021-01-22T14:09:23.389Z",
 					"route_data": "Wales hills",
 					"ride_type": "mountain",
 					"title": "evening ride",
@@ -248,9 +246,7 @@
 			"example request": {
 				"body": "NEW - Do not forget to commit regularly!",
 				"ride_id": 1,
-				"author": "t0gden",
-				"votes": 0,
-				"created_at": "new Date()"
+				"author": "t0gden"
 			},
 			"example response": {
 				"comment": {

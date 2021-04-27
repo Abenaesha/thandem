@@ -1,4 +1,5 @@
 const fs = require("fs")
+// eslint-disable-next-line no-unused-vars
 const json = require("../endpoints.json")
 
 exports.fetchAllEndpoints = () => {

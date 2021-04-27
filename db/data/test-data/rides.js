@@ -18,6 +18,7 @@ module.exports = [
 		created_at: 1611324163389,
 		joins: 5,
 		location: "Chester",
+		distanceInKm: "20"
 	},
 	{
 		author: "raofRides",
@@ -30,6 +31,7 @@ module.exports = [
 		created_at: 1601324163389,
 		joins: 0,
 		location: "Manchester",
+		distanceInKm: "50"
 	},
 	{
 		author: "rollingDan",
@@ -42,6 +44,7 @@ module.exports = [
 		created_at: 1601324163389,
 		joins: 10,
 		location: "Sheffield",
+		distanceInKm: "30"
 	},
 	{
 		author: "rollingDan",
@@ -54,5 +57,6 @@ module.exports = [
 		created_at: 1601324162389,
 		joins: 50,
 		location: "Sheffield",
+		distanceInKm: "20"
 	},
 ]

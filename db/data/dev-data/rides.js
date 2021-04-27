@@ -1,19 +1,20 @@
 module.exports = [
 	{
 		author: "t0gden",
-		ride_date: 1612324163389,
+		ride_date: 1611824163389,
 		route_data: "chester to manchester",
 		ride_type: "road",
 		title: "sunny road ride",
 		description: "anyone want to join me on a loop from chester to manchester",
 		experience_level: "advanced",
-		created_at: 1611324563389,
+		created_at: 1611324163389,
 		joins: 5,
-		location: "Chester"
+		location: "Chester",
+		distanceInKm: "20"
 	},
 	{
 		author: "raofRides",
-		ride_date: 1612324193389,
+		ride_date: 1612329163389,
 		route_data: "Manchester",
 		ride_type: "road",
 		title: "Manchester loop",
@@ -21,7 +22,8 @@ module.exports = [
 		experience_level: "intermediate",
 		created_at: 1601324163389,
 		joins: 0,
-		location: "Manchester"
+		location: "Manchester",
+		distanceInKm: "50"
 	},
 	{
 		author: "rollingDan",
@@ -33,6 +35,33 @@ module.exports = [
 		experience_level: "beginner",
 		created_at: 1601324163389,
 		joins: 10,
-		location: "Sheffield"
+		location: "Sheffield",
+		distanceInKm: "30"
+	},
+	{
+		author: "raofRides",
+		ride_date: 1612329163489,
+		route_data: "South Manchester",
+		ride_type: "road",
+		title: "Manchester ride",
+		description: "anyone want to join me on a loop around south manchester",
+		experience_level: "advanced",
+		created_at: 1601324163289,
+		joins: 0,
+		location: "Manchester Airport",
+		distanceInKm: "90"
+	},
+	{
+		author: "rollingDan",
+		ride_date: 1619324195389,
+		route_data: "Sheffield roads",
+		ride_type: "road",
+		title: "workout",
+		description: "anyone in the sheffield area want to join me on a loop?",
+		experience_level: "intermediate",
+		created_at: 1601324162389,
+		joins: 50,
+		location: "Sheffield",
+		distanceInKm: "20"
 	},
 ]

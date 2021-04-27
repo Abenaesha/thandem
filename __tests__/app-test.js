@@ -467,6 +467,7 @@ describe("POST - /ride", () => {
 			created_at: new Date(),
 			joins: 0,
 			location: "Chester",
+			distanceInKm: "20",
 		}
 		return request(app)
 			.post("/api/rides")
@@ -485,6 +486,7 @@ describe("POST - /ride", () => {
 					created_at: expect.any(String),
 					joins: 0,
 					location: "Chester",
+					distanceInKm: "20",
 				})
 			})
 	})
@@ -508,6 +510,7 @@ describe("GET - /rides/:ride_id", () => {
 					created_at: "2020-09-28T20:16:03.389Z",
 					joins: 10,
 					location: "Sheffield",
+					distanceInKm: "30",
 				})
 			})
 	} )
@@ -550,6 +553,7 @@ describe("PATCH - /api/rides/:ride_id", () => {
 					created_at: "2020-09-28T20:16:03.389Z",
 					joins: 1,
 					location: "Manchester",
+					distanceInKm: "50",
 				})
 			})
 	})

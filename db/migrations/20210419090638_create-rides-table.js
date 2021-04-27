@@ -11,6 +11,7 @@ exports.up = function(knex) {
 		rideTable.integer( "joins" ).defaultTo( 0 )
 		rideTable.string("location").notNullable()
 		rideTable.timestamp( "created_at" ).defaultTo( knex.fn.now() )
+		rideTable.string("distanceInKm").notNullable()
 	})
 }
 

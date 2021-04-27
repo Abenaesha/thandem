@@ -52,7 +52,8 @@ describe( "/api", () => {
 						expect(Array.isArray(users)).toBe(true)
 						users.forEach((user) => {
 							expect(user).toEqual(
-								expect.objectContaining({
+								expect.objectContaining( {
+									user_id: expect.any(Number),
 									username: expect.any(String),
 									avatar_url: expect.any(String),
 									first_name: expect.any(String),
@@ -87,7 +88,8 @@ describe( "/api", () => {
 					.send(input)
 					.expect(201)
 					.then(({ body: { newUser } }) => {
-						expect(newUser).toMatchObject({
+						expect( newUser ).toMatchObject( {
+							user_id: 4,
 							username: "Dave3",
 							first_name: "Dave",
 							last_name: "NC",
@@ -119,7 +121,8 @@ describe( "/api", () => {
 					.get("/api/users/raofRides")
 					.expect(200)
 					.then(({ body: { user } }) => {
-						expect(user).toMatchObject({
+						expect( user ).toMatchObject( {
+							user_id: 2,
 							username: "raofRides",
 							first_name: "Raof",
 							last_name: "Benaesha",
@@ -144,7 +147,8 @@ describe( "/api", () => {
 					})
 					.expect(200)
 					.then(({ body: { user } }) => {
-						expect(user).toEqual({
+						expect( user ).toEqual( {
+							user_id: 1,
 							username: "t0gden",
 							first_name: "Tom",
 							last_name: "Ogden",
@@ -165,7 +169,8 @@ describe( "/api", () => {
 					.send({ location: "Leeds" })
 					.expect(200)
 					.then(({ body: { user } }) => {
-						expect(user).toEqual({
+						expect( user ).toEqual( {
+							user_id: 1,
 							username: "t0gden",
 							first_name: "Tom",
 							last_name: "Ogden",
@@ -185,7 +190,8 @@ describe( "/api", () => {
 					.send({ password: "1edcba" })
 					.expect(200)
 					.then(({ body: { user } }) => {
-						expect(user).toEqual({
+						expect( user ).toEqual( {
+							user_id: 1,
 							username: "t0gden",
 							first_name: "Tom",
 							last_name: "Ogden",
@@ -210,7 +216,8 @@ describe( "/api", () => {
 					})
 					.expect(200)
 					.then(({ body: { user } }) => {
-						expect(user).toEqual({
+						expect( user ).toEqual( {
+							user_id: 1,
 							username: "t0gden",
 							first_name: "Tom",
 							last_name: "Ogden",

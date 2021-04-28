@@ -62,6 +62,7 @@ describe( "/api", () => {
 									location: expect.any(String),
 									bike_type: expect.any(String),
 									rider_level: expect.any( String ),
+									routes_data: expect.any(String)
 								})
 							)
 						})
@@ -80,7 +81,7 @@ describe( "/api", () => {
 					location: "Manchester",
 					bike_type: "Mountain Bike",
 					rider_level: "Beginner",
-					routes_data: null
+					routes_data: "null"
 				}
 				return request(app)
 					.post("/api/users")
@@ -95,7 +96,7 @@ describe( "/api", () => {
 							password: "d3nc",
 							avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
 							location: "Manchester",
-							routes_data: null,
+							routes_data: "null",
 							bike_type: "Mountain Bike",
 							rider_level: "Beginner",
 						})
@@ -129,7 +130,7 @@ describe( "/api", () => {
 							location: "Manchester",
 							bike_type: "Road",
 							rider_level: "Beginner",
-							routes_data: null
+							routes_data: "routes"
 						})
 					})
 			})
@@ -153,7 +154,7 @@ describe( "/api", () => {
 							avatar_url:
                 "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
 							location: "Chester",
-							routes_data: null,
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -173,7 +174,7 @@ describe( "/api", () => {
 							password: "abcde1",
 							avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
 							location: "Leeds",
-							routes_data: null,
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -193,7 +194,7 @@ describe( "/api", () => {
 							password: "1edcba",
 							avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
 							location: "Chester",
-							routes_data: null,
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -219,7 +220,7 @@ describe( "/api", () => {
 							avatar_url:
                 "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
 							location: "Manchester",
-							routes_data: null,
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -644,8 +645,7 @@ describe("/attendees", () => {
 				.then( ( { body: { msg } } ) => {
 					expect(msg).toBe("Attendee with id 1 has been successfully deleted")
 				})
-		})
-			
+		})		
 	})
 		
 })

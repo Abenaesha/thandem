@@ -638,14 +638,14 @@ describe("/attendees", () => {
 				name: "Dan",
 			}
 			return request(app)
-				.post("/api/rides/3/attendees")
+				.post("/api/rides/1/attendees")
 				.send(input)
 				.expect(201)
 				.then(({ body: { newAttendee } }) => {
 					expect(newAttendee).toMatchObject({
 						attendee_id: 3,
 						attendee: "rollingDan",
-						ride_id: 3,
+						ride_id: 1,
 						name: "Dan",
 					})
 				})

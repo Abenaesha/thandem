@@ -14,9 +14,7 @@ exports.postCommentByRideId = ( ride_id, { author, body } ) => {
 		created_at: new Date()
 	}
 
-	return connection( "comments" ).insert( newComment ).returning( "*" ).then( ( [ comment ] ) => {
-		return comment
-	})
+	return connection( "comments" ).insert( newComment ).returning( "*" )
 }
 
 exports.patchCommentById = ( comment_id, body ) => {

@@ -4,7 +4,16 @@ exports.fetchCommentsByRideId = ( ride_id ) => {
 	return connection( "comments" ).select("*").where( { ride_id } )	
 }
 
-exports.postCommentByRideId = (newComment) => {
+exports.postCommentByRideId = ( ride_id, { author, body } ) => {
+	
+	const newComment = {
+		body: body,
+		ride_id: ride_id,
+		author: author,
+		votes: 0,
+		created_at: new Date()
+	}
+	
 	return connection( "comments" ).insert( newComment ).returning("*")
 }
 

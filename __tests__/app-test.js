@@ -676,9 +676,7 @@ describe( "/comments", () => {
 		test( "201: POST - responds with 201 for successful request with new comment", () => {
 			const input = {
 				body: "NEW - Do not forget to commit regularly!",
-				ride_id: 1,
 				author: "t0gden",
-				created_at: new Date(),
 			}
 			return request( app )
 				.post( "/api/rides/1/comments" )

@@ -1,6 +1,6 @@
 exports.up = function (knex) {
 	return knex.schema.createTable( "users", ( userTable ) => {
-		userTable.string("username").primary().notNullable()
+		userTable.string("username").primary()
 		userTable.string("password")
 		userTable.string("email")
 		userTable.string("avatar_url")

@@ -622,7 +622,7 @@ describe("/attendees", () => {
             expect(attendee).toEqual(
               expect.objectContaining({
                 attendee_id: expect.any(Number),
-                author: expect.any(String),
+                attendee: expect.any(String),
                 ride_id: expect.any(Number),
                 name: expect.any(String),
               })
@@ -634,8 +634,7 @@ describe("/attendees", () => {
   describe("POST - /rides/ride_id/attendees", () => {
     test("should ", () => {
       const input = {
-        author: "rollingDan",
-        ride_id: 3,
+        attendee: "rollingDan",
         name: "Dan",
       }
       return request(app)
@@ -645,7 +644,7 @@ describe("/attendees", () => {
         .then(({ body: { newAttendee } }) => {
           expect(newAttendee).toMatchObject({
             attendee_id: 3,
-            author: "rollingDan",
+            attendee: "rollingDan",
             ride_id: 3,
             name: "Dan",
           })
@@ -663,7 +662,7 @@ describe("/attendees", () => {
     })
   })
   describe('DELETE - rides/ride_id/attendees/username"', () => {
-    test("200: Delete - Responds with a message for a successful delete request for a valid ride_id & username", () => {
+    test("200: Delete - Responds with a message for a successful delete request for a valid ride_id & attendee name", () => {
       return request(app)
         .delete("/api/rides/1/attendees/t0gden")
         .expect(200)

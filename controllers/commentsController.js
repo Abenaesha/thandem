@@ -12,7 +12,7 @@ exports.getCommentsByRideId = ( req, res, next ) => {
 exports.insertCommentByRideId = ( req, res, next ) => {
 	const { ride_id } = req.params
 	const post = req.body
-	postCommentByRideId(ride_id, post ).then( ( [newComment]  ) => {
+	postCommentByRideId(ride_id, post).then( ( newComment  ) => {
 		res.status(201).send({newComment})
 	} )
 		.catch(err => next(err))

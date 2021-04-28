@@ -250,7 +250,6 @@
 			"description": "Accepts an object to post a comment to an ride and responds with comment data posted",
 			"example request": {
 				"body": "NEW - Do not forget to commit regularly!",
-				"ride_id": 1,
 				"author": "t0gden"
 			},
 			"example response": {

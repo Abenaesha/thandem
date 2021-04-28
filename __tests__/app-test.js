@@ -679,14 +679,14 @@ describe( "/comments", () => {
 				author: "t0gden",
 			}
 			return request( app )
-				.post( "/api/rides/1/comments" )
+				.post( "/api/rides/3/comments" )
 				.send( input )
 				.expect( 201 )
 				.then( ( { body: { newComment } } ) => {
 					expect( newComment ).toMatchObject({
 						comment_id: 5,
 						body: "NEW - Do not forget to commit regularly!",
-						ride_id: 1,
+						ride_id: 3,
 						author: "t0gden",
 						votes: 0,
 						created_at: expect.any( String ),

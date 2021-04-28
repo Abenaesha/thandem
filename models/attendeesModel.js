@@ -25,18 +25,13 @@ exports.deleteAttendeeById = (attendee_id) => {
 		})
 }
 
-exports.deleteAttendeeByUsername = (ride_id, attendee) => {
+exports.deleteAttendeeByUsername = ( ride_id, username ) => {
 	return connection("attendees")
-		.where({ ride_id: "ride_id", attendee: "attendee" })
+		.where({ "ride_id": ride_id, "attendee": username })
 		.del()
 		.then(() => {
 			return {
-				msg: `user ${attendee} has been successfully removed from ride id ${ride_id}`,
+				msg: `user ${username} has been successfully removed from ride id ${ride_id}`,
 			}
 		})
 }
-
-// .where({
-// 	first_name: 'Test',
-// 	last_name:  'User'
-//   }).select('id')

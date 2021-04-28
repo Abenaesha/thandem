@@ -18,7 +18,6 @@ exports.insertAttendeeByRideId = (req, res, next) => {
 	const { ride_id } = req.params
 	postAttendeeByRideId(ride_id, req.body)
 		.then(([newAttendee]) => {
-			console.log(newAttendee, "NEW ATTENDEE CONTROLLER")
 			res.status(201).send({ newAttendee })
 		})
 		.catch((err) => next(err))
@@ -34,8 +33,8 @@ exports.removeAttendeeById = (req, res, next) => {
 }
 
 exports.removeAttendeeByUsername = (req, res, next) => {
-	const { ride_id, attendee } = req.params
-	deleteAttendeeByUsername(ride_id, attendee)
+	const { ride_id, username } = req.params
+	deleteAttendeeByUsername(ride_id, username)
 		.then((msg) => {
 			res.status(200).send(msg)
 		})

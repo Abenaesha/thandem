@@ -661,7 +661,7 @@ describe("/attendees", () => {
 				})
 		})
 	})
-	describe("DELETE - rides/ride_id/attendees/username\"", () => {
+	describe("DELETE - rides/ride_id/attendees/username", () => {
 		test("200: Delete - Responds with a message for a successful delete request for a valid ride_id & attendee name", () => {
 			return request(app)
 				.delete("/api/rides/1/attendees/t0gden")

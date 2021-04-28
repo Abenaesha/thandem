@@ -216,7 +216,6 @@
 			"description": "Accepts an object to post a comment to an ride and responds with comment data posted",
 			"example request": {
 				"author": "rollingDan",
-				"ride_id": 3,
 				"name": "Dan"
 			},
 			"example response": {
@@ -230,6 +229,9 @@
 		},
 		"DELETE - /api/attendees/:attendee_id": {
 			"msg": "Attendee with id `attendee_id` has been successfully deleted"
+		},
+		"DELETE - /api/attendees/:username": {
+			"msg": "Attendee with username `username` has been successfully deleted"
 		},
 		"GET - /api/rides/:ride_id/comments": {
 			"description": "responds with an array of comments posted to an ride",

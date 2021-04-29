@@ -1,3 +1,4 @@
+
 module.exports = [
 	{
 		username: "t0gden",
@@ -9,7 +10,7 @@ module.exports = [
 		location: "Chester",
 		bike_type: "All",
 		rider_level: "Intermediate",
-		routes_data: {}
+		routes_data: "routes",
 	},
 	{
 		username: "raofRides",
@@ -21,7 +22,7 @@ module.exports = [
 		location: "Manchester",
 		bike_type: "Road",
 		rider_level: "Beginner",
-		routes_data: {}
+		routes_data: "routes",
 	},
 	{
 		username: "rollingDan",
@@ -29,11 +30,12 @@ module.exports = [
 		last_name: "Stevenson",
 		email: "example3@gmail.com",
 		password: "abcde3",
-		avatar_url: "http://clipart-library.com/images/pc78gEXRi.jpg",
+		avatar_url:
+      "https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fdgalywyr863hv.cloudfront.net%2Fpictures%2Fathletes%2F29656122%2F8899811%2F1%2Flarge.jpg",
 		location: "Sheffield",
 		bike_type: "All",
 		rider_level: "Advanced",
-		routes_data: {}
+		routes_data: "routes",
 	},
 	{
 		username: "hannah123",
@@ -45,7 +47,7 @@ module.exports = [
 		location: "Manchester",
 		bike_type: "Mountain",
 		rider_level: "Intermediate",
-		routes_data: {}
+		routes_data: "routes",
 	},
 	{
 		username: "nadiaPedals",
@@ -57,6 +59,42 @@ module.exports = [
 		location: "London",
 		bike_type: "Road",
 		rider_level: "Advanced",
-		routes_data: {}
+		routes_data: "routes",
+	},
+	{
+		username: "singleSyllableDave",
+		first_name: "Dave",
+		last_name: "NC",
+		email: "example5@gmail.com",
+		password: "abcde5",
+		avatar_url: "http://clipart-library.com/images/KLcdBGgT4.jpg",
+		location: "Leeds",
+		bike_type: "Mountain",
+		rider_level: "Advanced",
+		routes_data: "routes",
+	},
+	{
+		username: "vel-odrome",
+		first_name: "Vel",
+		last_name: "NC",
+		email: "example5@gmail.com",
+		password: "abcde5",
+		avatar_url: "http://clipart-library.com/images/KLcdBGgT4.jpg",
+		location: "Leeds",
+		bike_type: "Road",
+		rider_level: "Intermediate",
+		routes_data: "routes",
+	},
+	{
+		username: "doubleSyllableDavid",
+		first_name: "David",
+		last_name: "NC",
+		email: "example5@gmail.com",
+		password: "abcde5",
+		avatar_url: "http://clipart-library.com/images/KLcdBGgT4.jpg",
+		location: "Leeds",
+		bike_type: "road",
+		rider_level: "beginner",
+		routes_data: "routes",
 	},
 ]

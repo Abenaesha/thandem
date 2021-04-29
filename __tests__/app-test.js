@@ -64,7 +64,7 @@ describe("/api", () => {
 									location: expect.any(String),
 									bike_type: expect.any(String),
 									rider_level: expect.any(String),
-									routes_data: expect.any(Object),
+									routes_data: expect.any(String),
 								})
 							)
 						})
@@ -75,83 +75,25 @@ describe("/api", () => {
 			test("201: reposnds with 201 for a successful post user request", () => {
 				const input = {
 					avatar_url: "https://dgalywyr863hv.cloudfront.net/pictures/athletes/29656122/8899811/1/large.jpg",
-					first_name: "Dan",
+					first_name: "Dave",
 					last_name: "Stevenson",
 					location: "Sheffield, United Kingdom",
-					routes_data: [{
-						routeName: "Edale to Kinder Scout",
-						routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-						startLatLng: [53.363171, -1.822494],
-						distanceInKm: 13.729
-					},
-					{
-						routeName: "Sheffield to the Peaks",
-						routePolyline: "}xxdI~eaHQb@FTNP~@ZX\\M`@{@|ADHXd@bBTTNXp@A\\HVQb@J|@h@r@JZZBRRN\\|@lAh@jAAtBT~Dx@x@`CJb@bAr@dAdAx@fAnAV`@j@`Bp@rCn@zA\\vA`@~@|@z@hApAdApAzA~Bf@zAD?v@fBzB|G`@f@x@`@d@dA@n@TrBj@dDVhGIrCL|@h@xADZC\\L|BGdC]pDk@~EoAtEq@|@gD~DmBrCCJBXUl@]^e@lAAXYZEz@NlAE`AL~DRtCLz@pArF`DhJn@xBv@zDnBbHrB|IrHzSl@z@tD|D~CbMd@fDLhCTvBFjCH|@p@tCbAjCn@pC`@lA|@bFNtCH`DWlD^hDfAhE`@fCBfAGtCFz@Tp@pAjBPv@jBxO@h@KfCAzDOrCB\\E`CGzB^xET`AK|ACvAm@dBGh@GnA@`DPzBhAxEBhAIf@g@vAO^QNe@pAa@nDYrAWj@{@z@o@^Q\\uAnDU|AFtFr@zGNb@`@^r@dAb@jAAb@Ox@Un@wBbDUh@c@tCEnFg@vQIpCYjDEvAOdSYnEUvAGbBPtGHrFT`DNv@Rb@ZIfCgBX{@NeA`@i@J@PDHRPjAHfBd@xB^jAh@z@`BWnFEnASn@[fAIlGfApBj@|BTpCf@p@}@j@mAR}@P}AJqCSeDCoFPcIX_DbBsIlAmCjCsDbAeChByFt@gAx@i@x@@b@Tx@rAT?\\oA^qClBuKbBcIpCyHr@_BjCwE`@qAf@_AP_AFwAM}Co@gHu@ePy@_NgAeX[}CaAeOk@mGkAuV}AwT]kLAoDQyDLcBMuC_@{Gu@qFGaBe@_FEcA]sB]qE_@gBgBkEc@kAAW[eLEyGHkGl@kJ?sBaBoZVoJRmDe@u@yCgBmBwAWg@k@cDYa@{DiBiD_F{@y@aAk@oDuAcBa@gAH_Bj@s@@gTwAmCwAgAw@u@y@y@{Ai@mBcAoNWkBa@aA{@]O[Ae@L}AYsB[i@USu@iCaAsHYmEo@qGAcAgAoFQyAu@kDcA{Da@aCs@_CQcAw@eByAmGe@eC_@}@WgEuAsFqAwCYoAEqCH}@k@wDMkE_@}Cw@iA{AkAMUc@cD]e@?KR[I[i@i@g@iBuA_Dk@iBY]eBzA_BP_B`BcAhBkAfAsCbDMAgA|@{@dAy@^OhAUj@",
-						startLatLng: [53.380157, -1.485919],
-						distanceInKm: 18.708599999999997,
-					},
-					{
-						routeName: "Sheffield river trail",
-						routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-						startLatLng: [53.363171, -1.822494],
-						distanceInKm: 13.729
-					},
-					{
-						routeName: "City centre short cycle",
-						routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-						startLatLng: [53.363171, -1.822494],
-						distanceInKm: 13.729
-					},
-					{
-						routeName: "Hathersage to Castleton",
-						routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-						startLatLng: [53.363171, -1.822494],
-						distanceInKm: 13.729
-					}],
-					username: "some-guy",
+					routes_data: "routes",
+					username: "rollingDave",
 				}
-				return request(app)
-					.post("/api/users")
-					.send(input)
-					.expect(201)
-					.then(({ body: { newUser } }) => {
-						expect(newUser).toMatchObject({
+				return request( app )
+					.post( "/api/users" )
+					.send( input )
+					.expect( 201 )
+					.then( ( { body: { newUser } } ) => {
+						expect( newUser ).toMatchObject( {
 							avatar_url: "https://dgalywyr863hv.cloudfront.net/pictures/athletes/29656122/8899811/1/large.jpg",
-							first_name: "Dan",
+							first_name: "Dave",
 							last_name: "Stevenson",
 							location: "Sheffield, United Kingdom",
-							routes_data: [{
-								routeName: "Edale to Kinder Scout",
-								routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-								startLatLng: [53.363171, -1.822494],
-								distanceInKm: 13.729
-							},
-							{
-								routeName: "Sheffield to the Peaks",
-								routePolyline: "}xxdI~eaHQb@FTNP~@ZX\\M`@{@|ADHXd@bBTTNXp@A\\HVQb@J|@h@r@JZZBRRN\\|@lAh@jAAtBT~Dx@x@`CJb@bAr@dAdAx@fAnAV`@j@`Bp@rCn@zA\\vA`@~@|@z@hApAdApAzA~Bf@zAD?v@fBzB|G`@f@x@`@d@dA@n@TrBj@dDVhGIrCL|@h@xADZC\\L|BGdC]pDk@~EoAtEq@|@gD~DmBrCCJBXUl@]^e@lAAXYZEz@NlAE`AL~DRtCLz@pArF`DhJn@xBv@zDnBbHrB|IrHzSl@z@tD|D~CbMd@fDLhCTvBFjCH|@p@tCbAjCn@pC`@lA|@bFNtCH`DWlD^hDfAhE`@fCBfAGtCFz@Tp@pAjBPv@jBxO@h@KfCAzDOrCB\\E`CGzB^xET`AK|ACvAm@dBGh@GnA@`DPzBhAxEBhAIf@g@vAO^QNe@pAa@nDYrAWj@{@z@o@^Q\\uAnDU|AFtFr@zGNb@`@^r@dAb@jAAb@Ox@Un@wBbDUh@c@tCEnFg@vQIpCYjDEvAOdSYnEUvAGbBPtGHrFT`DNv@Rb@ZIfCgBX{@NeA`@i@J@PDHRPjAHfBd@xB^jAh@z@`BWnFEnASn@[fAIlGfApBj@|BTpCf@p@}@j@mAR}@P}AJqCSeDCoFPcIX_DbBsIlAmCjCsDbAeChByFt@gAx@i@x@@b@Tx@rAT?\\oA^qClBuKbBcIpCyHr@_BjCwE`@qAf@_AP_AFwAM}Co@gHu@ePy@_NgAeX[}CaAeOk@mGkAuV}AwT]kLAoDQyDLcBMuC_@{Gu@qFGaBe@_FEcA]sB]qE_@gBgBkEc@kAAW[eLEyGHkGl@kJ?sBaBoZVoJRmDe@u@yCgBmBwAWg@k@cDYa@{DiBiD_F{@y@aAk@oDuAcBa@gAH_Bj@s@@gTwAmCwAgAw@u@y@y@{Ai@mBcAoNWkBa@aA{@]O[Ae@L}AYsB[i@USu@iCaAsHYmEo@qGAcAgAoFQyAu@kDcA{Da@aCs@_CQcAw@eByAmGe@eC_@}@WgEuAsFqAwCYoAEqCH}@k@wDMkE_@}Cw@iA{AkAMUc@cD]e@?KR[I[i@i@g@iBuA_Dk@iBY]eBzA_BP_B`BcAhBkAfAsCbDMAgA|@{@dAy@^OhAUj@",
-								startLatLng: [53.380157, -1.485919],
-								distanceInKm: 18.708599999999997,
-							},
-							{
-								routeName: "Sheffield river trail",
-								routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-								startLatLng: [53.363171, -1.822494],
-								distanceInKm: 13.729
-							},
-							{
-								routeName: "City centre short cycle",
-								routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-								startLatLng: [53.363171, -1.822494],
-								distanceInKm: 13.729
-							},
-							{
-								routeName: "Hathersage to Castleton",
-								routePolyline: "ynudIr}bJ[aA[}C[MOq@cAyFL[IiAk@}AE_Ae@}B@c@aAoDHe@Ww@IgAHY\\[Po@QGNn@UH[|@y@v@qGt@iAa@y@iASw@YMyBq@kCTiAh@yBXaAx@g@rAe@NMZVpAC|DNzBCbDJ|AEd@FjBPpBMpAn@tETjCLZ?pADV`@\\fBvFx@jENrCPJd@`AnAxDp@vD?h@b@x@x@pFZr@n@lEXpCAtAL\\V~DCfJFf@K`AN|BQr@AjA~AtGVrBz@dCA`AjAhDdAvBNjBFlNPzATLJxA~@x@Sh@i@VNfAGb@{@jAKEgA~As@~BYhHe@dBKfALnDE~C]vGa@hAG~@g@hBW|Cc@xB_BvCi@X_@tBe@jAiAv@qBfH}@dC}@bBUdAa@r@HNKIy@hCy@bAc@`Bk@pAi@|Cy@fD[hDEtAQp@?b@i@d@aAZw@ANRGZ{A@IFH|@FFKt@QCGRWLOQO?AJ@M]Jg@RUZ@n@KLFFGHLfAOXdAnAv@VIB\\|BE~AQ~Aj@zFBjAU|@AjBK`ARxA?xAGEf@bDATGGTnCMRTPLh@JtF_@pCYp@?`@_@XBP]JYb@w@Hc@b@UDIXWDIPYS{BHoBe@ODe@~@u@L{@m@iACa@Ue@Pa@f@QEQZ_BCKTQGKTu@^o@a@q@N]ZWC[p@g@f@mA[[]wAEGPI[IDLKAJIEDFLQZVtCj@~Ay@FY|B?^YRHl@k@bBFPYzAq@xBVr@d@h@I`@{@NEnBf@dAOnAZp@{@jAu@`@AnA}Av@yFGiEc@qE?_AUqAE}DG[@wBZqBA{A]iD@wFCcBQ}@o@Oq@uACc@NsCj@eAnBSI_BFg@dAL\\ET_@R@BXEQ|@c@v@eAR_At@kHvAuGfA}Cj@y@x@oBVcArCkHzBkIpAgAh@kAd@sBpAuAt@iBb@{Bb@{Dx@{Eh@gJGqGr@yDP}F|@eCbCuCHq@ImAh@IJ]_AaAGuAWOMw@GaOKcBoAeCw@eCUiA@s@eAaDIkAi@wBIGAe@e@mBCsATqACuAHgAIq@DgAMy@@iHAYS{AMo@@_AQqBq@iE_@iAkAmGWk@u@qF[m@s@aCm@kAQcCcAwFwAoEo@aA?_AS{@I}Aq@oFCwEQ_@BqHM}ABs@O_@HuCS}AKGg@j@`@u@a@g@",
-								startLatLng: [53.363171, -1.822494],
-								distanceInKm: 13.729
-							}],
-							username: "some-guy",
-						})
+							routes_data: "routes",
+							username: "rollingDave",
+						} )
 					})
 			})
 			test("405: responds with status 405 for invalid methods", () => {
@@ -183,7 +125,7 @@ describe("/api", () => {
 							location: "Manchester",
 							bike_type: "Road",
 							rider_level: "Beginner",
-							routes_data: {},
+							routes_data: "routes",
 						})
 					})
 			})
@@ -207,7 +149,7 @@ describe("/api", () => {
 							avatar_url:
                 "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
 							location: "Chester",
-							routes_data: {},
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -227,7 +169,7 @@ describe("/api", () => {
 							password: "abcde1",
 							avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
 							location: "Leeds",
-							routes_data: {},
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -247,7 +189,7 @@ describe("/api", () => {
 							password: "1edcba",
 							avatar_url: "http://clipart-library.com/images/8TEjdRMEc.png",
 							location: "Chester",
-							routes_data: {},
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -273,7 +215,7 @@ describe("/api", () => {
 							avatar_url:
                 "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/25896/blue-bike-clipart-md.png",
 							location: "Manchester",
-							routes_data: {},
+							routes_data: "routes",
 							bike_type: "All",
 							rider_level: "Intermediate",
 						})
@@ -326,7 +268,7 @@ describe("/api/rides", () => {
 								ride_id: expect.any(Number),
 								author: expect.any(String),
 								ride_date: expect.any(String),
-								route_data: expect.any(Object),
+								route_data: expect.any(String),
 								ride_type: expect.any(String),
 								title: expect.any(String),
 								description: expect.any(String),
@@ -524,7 +466,7 @@ describe("POST - /ride", () => {
 		const input = {
 			author: "t0gden",
 			ride_date: new Date(1619324193389),
-			route_data: {},
+			route_data: "route",
 			ride_type: "mountain",
 			title: "evening ride",
 			description: "amazing bike adventure in Wales",
@@ -543,7 +485,7 @@ describe("POST - /ride", () => {
 					ride_id: 5,
 					author: "t0gden",
 					ride_date: "2021-04-25T04:16:33.389Z",
-					route_data: {},
+					route_data: "route",
 					ride_type: "mountain",
 					title: "evening ride",
 					description: "amazing bike adventure in Wales",
@@ -611,7 +553,7 @@ describe("PATCH - /api/rides/:ride_id", () => {
 					ride_id: 2,
 					author: "raofRides",
 					ride_date: "2021-02-03T05:12:43.389Z",
-					route_data: {},
+					route_data: "route",
 					ride_type: "road",
 					title: "Manchester loop",
 					description: "anyone want to join me on a loop around manchester",

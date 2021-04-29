@@ -2,7 +2,7 @@ module.exports = [
 	{
 		author: "t0gden",
 		ride_date: 1611824163389,
-		route_data: "chester to manchester",
+		route_data: {},
 		ride_type: "road",
 		title: "sunny road ride",
 		description: "anyone want to join me on a loop from chester to manchester",
@@ -15,7 +15,7 @@ module.exports = [
 	{
 		author: "raofRides",
 		ride_date: 1612329163389,
-		route_data: "Manchester",
+		route_data: {},
 		ride_type: "road",
 		title: "Manchester loop",
 		description: "anyone want to join me on a loop around manchester",
@@ -28,7 +28,7 @@ module.exports = [
 	{
 		author: "rollingDan",
 		ride_date: 1619324193389,
-		route_data: "Sheffield hills",
+		route_data: {},
 		ride_type: "cross country",
 		title: "gentle pedal outside sheffield",
 		description: "anyone in the sheffield area want to join me on a loop?",
@@ -39,22 +39,9 @@ module.exports = [
 		distanceInKm: "30"
 	},
 	{
-		author: "raofRides",
-		ride_date: 1612329163489,
-		route_data: "South Manchester",
-		ride_type: "road",
-		title: "Manchester ride",
-		description: "anyone want to join me on a loop around south manchester",
-		experience_level: "advanced",
-		created_at: 1601324163289,
-		joins: 0,
-		location: "Manchester Airport",
-		distanceInKm: "90"
-	},
-	{
 		author: "rollingDan",
 		ride_date: 1619324195389,
-		route_data: "Sheffield roads",
+		route_data: {},
 		ride_type: "road",
 		title: "workout",
 		description: "anyone in the sheffield area want to join me on a loop?",

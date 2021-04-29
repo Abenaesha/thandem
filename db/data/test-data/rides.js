@@ -10,7 +10,7 @@ module.exports = [
 	{
 		author: "t0gden",
 		ride_date: 1611824163389,
-		route_data: "chester to manchester",
+		route_data: "route",
 		ride_type: "road",
 		title: "sunny road ride",
 		description: "anyone want to join me on a loop from chester to manchester",
@@ -23,7 +23,7 @@ module.exports = [
 	{
 		author: "raofRides",
 		ride_date: 1612329163389,
-		route_data: "Manchester",
+		route_data: "route",
 		ride_type: "road",
 		title: "Manchester loop",
 		description: "anyone want to join me on a loop around manchester",
@@ -36,7 +36,7 @@ module.exports = [
 	{
 		author: "rollingDan",
 		ride_date: 1619324193389,
-		route_data: "Sheffield hills",
+		route_data: "route",
 		ride_type: "cross country",
 		title: "gentle pedal outside sheffield",
 		description: "anyone in the sheffield area want to join me on a loop?",
@@ -49,7 +49,7 @@ module.exports = [
 	{
 		author: "rollingDan",
 		ride_date: 1619324195389,
-		route_data: "Sheffield roads",
+		route_data: "route",
 		ride_type: "road",
 		title: "workout",
 		description: "anyone in the sheffield area want to join me on a loop?",

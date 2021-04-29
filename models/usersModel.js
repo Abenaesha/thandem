@@ -5,7 +5,12 @@ exports.fetchUsers = () => {
 }
 
 exports.postUser = ( newUser ) => {
-	return connection("users").insert(newUser).returning("*")
+	const routes_data = JSON.stringify( newUser.routes_data )
+	delete newUser.routes_data
+
+	const y = { ...newUser, routes_data }
+
+	return connection("users").insert(y).returning("*")
 }
 
 exports.fetchUserByUsername = ( username ) => {

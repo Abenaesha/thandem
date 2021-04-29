@@ -9,7 +9,7 @@ module.exports = [
 		location: "Chester",
 		bike_type: "All",
 		rider_level: "Intermediate",
-		routes_data: "routes",
+		routes_data: {}
 	},
 	{
 		username: "raofRides",
@@ -21,7 +21,7 @@ module.exports = [
 		location: "Manchester",
 		bike_type: "Road",
 		rider_level: "Beginner",
-		routes_data: "routes"
+		routes_data: {}
 	},
 	{
 		username: "rollingDan",
@@ -33,7 +33,7 @@ module.exports = [
 		location: "Sheffield",
 		bike_type: "All",
 		rider_level: "Advanced",
-		routes_data: "routes"
+		routes_data: {}
 	},
 	{
 		username: "hannah123",
@@ -45,7 +45,7 @@ module.exports = [
 		location: "Manchester",
 		bike_type: "Mountain",
 		rider_level: "Intermediate",
-		routes_data: "routes"
+		routes_data: {}
 	},
 	{
 		username: "nadiaPedals",
@@ -57,6 +57,6 @@ module.exports = [
 		location: "London",
 		bike_type: "Road",
 		rider_level: "Advanced",
-		routes_data: "routes"
+		routes_data: {}
 	},
 ]

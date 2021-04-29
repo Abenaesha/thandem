@@ -10,7 +10,7 @@ exports.up = function (knex) {
       .references("rides.ride_id")
       .onDelete("CASCADE")
     attendeesTable.string("name").notNullable()
-    attendeesTable.string("avatar_url").defaultTo("users.avatar_url")
+    attendeesTable.string("avatar_url")
   })
 }
 
